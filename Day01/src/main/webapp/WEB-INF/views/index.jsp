@@ -9,7 +9,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="${path}/resources/assets/css/main.css" />
+<link rel="stylesheet" href="${path}/resources/css/index.css" />
 <style>
 </style>
 </head>
@@ -28,7 +28,7 @@
 							<p id="loginSession">로그인하세요</p>
 						</c:when>
 						<c:otherwise>
-							<p>${sessionScope.data.mname}님환영합니다!</p>
+							<p>${sessionScope.sessionVo.userName}님환영합니다!</p>
 						</c:otherwise>
 					</c:choose>
 					<c:if test="${!empty fail}">
@@ -38,15 +38,16 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="#intro">소개</a></li>
 					<c:choose>
 						<c:when test="${empty check}">
+							<li><a href="#intro">소개</a></li>
 							<li><a href="#login">로그인</a></li>
 							<li><a href="#regist">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
+							<li><a href="#choiceSul">술 선택</a></li>
 							<li><a href="#logout">로그아웃</a></li>
-							<li><a href="#">내정보</a></li>
+							<li><a href="#myInfo">내정보</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
@@ -57,53 +58,36 @@
 		<div id="main">
 
 			<article id="intro">
-				<h2 class="major">학사관리</h2>
+				<h2 class="major">소개</h2>
 				<div>
-					<ul>
-						<li id="registHaksa"><a>등록</a></li>
-						<li id="deleteHaksa"><a>삭제</a></li>
-						<li id="searchHaksa"><a>검색</a></li>
-						<li id="editHaksa"><a>수정</a></li>
-						<li id="listHaksa"><a>전체출력</a></li>
-					</ul>
+					<p>주류선택 후 랜덤한 안주를 추천해주는 용도</p>
 				</div>
-				<!-- 숨겨진 메뉴 토글로 보이기 -->
-				<div id="hideDivUl">
-					<div class="hideAll" id="registToggle">
-						<ul class="listShow">
-							<li><a href="#intro">학생등록</a></li>
-							<li><a href="#intro">교수등록</a></li>
-							<li><a href="#intro">관리자등록</a></li>
-						</ul>
-					</div>
-					<div class="hideAll" id="deleteToggle">
-						<ul class="listShow">
-							<li><a href="#intro">학생삭제</a></li>
-							<li><a href="#intro">교수삭제</a></li>
-							<li><a href="#intro">관리자삭제</a></li>
-						</ul>
-					</div>
-					<div class="hideAll" id="searchToggle">
-						<ul class="listShow">
-							<li><a href="#intro">학생검색</a></li>
-							<li><a href="#intro">교수검색</a></li>
-							<li><a href="#intro">관리자검색</a></li>
-						</ul>
-					</div>
-					<div class="hideAll" id="editToggle">
-						<ul class="listShow">
-							<li><a href="#intro">학생수정</a></li>
-							<li><a href="#intro">교수수정</a></li>
-							<li><a href="#intro">관리자수정</a></li>
-						</ul>
-					</div>
-					<div class="hideAll" id="listToggle">
-						<ul class="listShow">
-							<li><a href="#intro">학생출력</a></li>
-							<li><a href="#intro">교수출력</a></li>
-							<li><a href="#intro">관리자출력</a></li>
-						</ul>
-					</div>
+			</article>
+
+			<article id="choiceSul">
+				<h2 class="major">술 클릭!</h2>
+				<div>
+					<input id="soju" type="button" value="소주"
+						onclick="hideMenu(); sojuRandomFood();" />
+						<input id="registHaksa"
+						type="button" value="맥주" onclick="hideMenu(); beerRandomFood()" />
+						<input
+						id="registHaksa" type="button" value="와인"
+						onclick="hideMenu(); wineRandomFood()" />
+						<input id="registHaksa"
+						type="button" value="보드카" onclick="hideMenu(); vodkaRandomFood()" />
+						<input
+						id="registHaksa" type="button" value="위스키"
+						onclick="hideMenu(); whiskeyRandomFood()" />
+				</div>
+				<div id="randomFoodList">
+					<p id="goFoodEva">안주 클릭하면 한줄평 보러가짐</p>
+					<button type="button" class="showFood" id="showFood1">randomfood1</button>
+					<button type="button" class="showFood" id="showFood2">randomfood2</button>
+					<button type="button" class="showFood" id="showFood3">randomfood3</button>
+				</div>
+				<div id="showBoardList">
+					<input type="button" value="전체 한줄평 보러가기" id="showBoardList" />
 				</div>
 
 			</article>
@@ -111,7 +95,7 @@
 			<!-- Board-->
 			<article id="board">
 				<h2 class="major">게시판</h2>
-				<form method="post" name="goBoard">
+				<form method="post" name="goBoard"  accept-charset="UTF-8">
 					<table border="1">
 						<tr>
 							<th>글번호</th>
@@ -133,15 +117,15 @@
 			<!-- Login -->
 			<article id="login">
 				<h2 class="major">로그인</h2>
-				<form method="post" action="login.do">
+				<form method="post" action="login" accept-charset="UTF-8">
 					<div class="fields">
 						<div class="field half">
 							<label for="ID">아이디</label> <input type="text" id="inputID"
-								placeholder="아이디 입력" name="memberId" required="required">
+								placeholder="아이디 입력" name="userId" required="required">
 						</div>
 						<div class="field half">
 							<label for="PW">비밀번호</label> <input type="password" id="iputPW"
-								placeholder="비밀번호 입력" name="memberPw" required="required">
+								placeholder="비밀번호 입력" name="userPw" required="required">
 						</div>
 					</div>
 					<ul class="actions">
@@ -153,10 +137,17 @@
 			<!-- Logout -->
 			<article id="logout">
 				<h2 class="major">로그아웃</h2>
-				<form method="post">
-					<button type="submit" class="primary" id="sdyMargin"
-						formaction="logout.do">로그아웃</button>
-					<button type="submit" class="primary" formaction="index.jsp">취소</button>
+				<form>
+					<div class="fields">
+						<div class="field half">
+							<button type="button" class="primary" id="sdyMargin"
+								onclick="location.href='/controller/logout'">로그아웃</button>
+						</div>
+						<div class="field half">
+							<button type="button" class="primary"
+								onclick="location.href='/controller/'">취소</button>
+						</div>
+					</div>
 				</form>
 			</article>
 			<!-- Regist -->
@@ -164,28 +155,29 @@
 				<h2 class="major">회원가입</h2>
 				<!-- onsubmit return + 함수() = 클릭시 함수호출 -->
 				<form method="post" action="regist" name="registHard"
-					onsubmit="return formCheck(this)">
+					onsubmit="return formCheck(this)" accept-charset="UTF-8">
 					<div class="fields">
 						<div class="field half">
 							<label for="ID">아이디 15자내</label> <input type="text" id="registID"
-								name="registID" required="required" placeholder="아이디 입력"
-								onkeydown="inputIDCheck">
+								name="userId" required="required" placeholder="아이디 입력"
+								maxlength="15" onkeydown="inputIDCheck">
 						</div>
 						<div class="field half">
 							<label for="irum">이름 10자내</label> <input type="text" id="irum"
-								name="irum" placeholder="이름 입력" required="required">
+								maxlength="10" name="userName" placeholder="이름 입력"
+								required="required">
 						</div>
 					</div>
 
 					<div class="fields">
 						<div class="field half">
 							<label for="PW">비밀번호 15자내</label> <input type="password"
-								id="registPW" name="registPW" id="registPW"
+								id="registPW" name="registPW" maxlength="15"
 								placeholder="비밀번호 입력" onchange="checkPw()" required="required">
 						</div>
 						<div class="field half">
 							<label for="PW">비밀번호확인</label> <input type="password"
-								name="checkPW" id="checkPW" placeholder="비밀번호 재입력"
+								name="userPw" id="checkPW" placeholder="비밀번호 재입력" maxlength="15"
 								onchange="checkPw()" required="required">
 						</div>
 					</div>
@@ -211,6 +203,61 @@
 					</ul>
 				</form>
 			</article>
+
+			<article id="myInfo">
+				<h2 class="major">내정보</h2>
+				<table>
+					<tr>
+						<td>아이디</td>
+						<td><input type="text" name="userId"
+							value="${sessionScope.sessionVo.userId}" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>이름</td>
+						<td><input type="text" name="userName"
+							value="${sessionScope.sessionVo.userName}" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td><button type="button"
+								onclick="location.href='#myInfoEdit'" class="primary"
+								id="sdyMargin">비밀번호변경</button></td>
+						<td><button type="button"
+								onclick="location.href='/controller/deleteUser'" class="primary">회원탈퇴</button></td>
+					</tr>
+				</table>
+			</article>
+
+			<article id="myInfoEdit">
+				<h2 class="major">내정보</h2>
+				<form method="post" accept-charset="UTF-8">
+					<table border="1">
+						<tr>
+							<td>아이디</td>
+							<!-- 세션값을 빼올때는 sessionScope.세션이름.세션에있는값 으로 작성하면된다 -->
+							<td><input type="text" name="userId"
+								value="${sessionScope.sessionVo.userId}" readonly="readonly"></td>
+						</tr>
+						<tr>
+							<td>비밀번호</td>
+							<td><input type="text" name="userPw" placeholder="변경할비밀번호입력"
+								required="required"></td>
+						</tr>
+						<tr>
+							<td>이름</td>
+							<td><input type="text" name="userName"
+								value="${sessionScope.sessionVo.userName}" readonly="readonly"></td>
+						</tr>
+						<tr>
+							<td><button type="submit" formaction="userInfoEdit"
+									class="primary">비밀번호변경</button></td>
+							<td><button type="button" onclick="location.href='#myInfo'"
+									class="primary" id="sdyMargin">뒤로가기</button></td>
+						</tr>
+					</table>
+				</form>
+			</article>
+
+			<!-- 여가 끝남 -->
 		</div>
 
 		<!-- Footer -->
@@ -224,11 +271,12 @@
 	<div id="bg"></div>
 
 	<!-- Scripts -->
-	<script src="${path}/resources/assets/js/jquery.min.js"></script>
-	<script src="${path}/resources/assets/js/browser.min.js"></script>
-	<script src="${path}/resources/assets/js/breakpoints.min.js"></script>
-	<script src="${path}/resources/assets/js/util.js"></script>
-	<script src="${path}/resources/assets/js/main.js"></script>
+	<script src="${path}/resources/js/jquery.min.js"></script>
+	<script src="${path}/resources/js/browser.min.js"></script>
+	<script src="${path}/resources/js/breakpoints.min.js"></script>
+	<script src="${path}/resources/js/util.js"></script>
+	<script src="${path}/resources/js/main.js"></script>
+	<script src="${path}/resources/js/index.js"></script>
 	<!-- 추가 스크립트 -->
 	<script>
 		

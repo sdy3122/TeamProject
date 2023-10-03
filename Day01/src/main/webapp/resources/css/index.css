@@ -4,6 +4,23 @@
 	url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600")
 	;
 
+#randomFoodList {
+	display : none;
+	margin : 1em 0em 0em 0em;
+}
+
+#goFoodEva {
+	margin : 0em 0em 0.5em 0em;
+}
+
+#showBoardList {
+	margin : 1em 0em 1em 0em;
+}
+
+.showFood {
+	background-color: white !important;
+}
+
 #intro ul li {
 	margin-bottom: 1em;
 }
@@ -14,7 +31,6 @@
 	top: 140px;
 	right: 50px;
 }
-
 .primary {
 	margin-right: 10px;
 }
