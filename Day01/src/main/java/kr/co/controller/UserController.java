@@ -1,5 +1,8 @@
 package kr.co.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.mappers.SojuMapper;
 import kr.co.service.UserService;
+import kr.co.vo.SojuVo;
 import kr.co.vo.UserVo;
 
 @Controller
@@ -19,9 +24,11 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
+	@Autowired
+	private SojuMapper sojuMapper;
 
 	@GetMapping(value = { "/" })
-	public String home() {
+	public String home(Model model) {
 		return "index";
 	}
 
@@ -52,6 +59,11 @@ public class UserController {
 				HttpSession session = req.getSession(false);
 				session.setAttribute("sessionVo", vo);
 				session.setAttribute("check", true);
+				
+				ArrayList<SojuVo> al = sojuMapper.selectByWriter(vo.getUserName());
+				List<SojuVo> menuList = sojuMapper.selectDistinctSojuList();
+				session.setAttribute("cnt", al.size());
+				session.setAttribute("menuList", menuList);
 				return "index";
 			} else {
 				System.out.println("아이디 일치, 비밀번호 틀림 ㅅㄱ");
@@ -146,5 +158,10 @@ public class UserController {
 			return "findAnyPw";
 		}
 	}
-
+	
+	@GetMapping("/board")
+	public String board() {
+		
+		return "index";
+	}
 }

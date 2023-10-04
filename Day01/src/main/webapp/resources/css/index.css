@@ -9,15 +9,26 @@
 	margin : 1em 0em 0em 0em;
 }
 
+
 #goFoodEva {
 	margin : 0em 0em 0.5em 0em;
 }
 
 #showBoardList {
 	margin : 1em 0em 1em 0em;
+	display : block;
+}
+
+#moveCenter {
+	text-align: center;
+}
+
+div input {
+	width : 100px;
 }
 
 .showFood {
+	width : 100px;
 	background-color: white !important;
 }
 

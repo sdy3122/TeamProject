@@ -3,5 +3,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="kr.co.vo.UserVo" alias="UserVo"/>
+		<typeAlias type="kr.co.vo.SojuVo" alias="SojuVo"/>
 	</typeAliases>
 </configuration>

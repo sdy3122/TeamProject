@@ -31,9 +31,6 @@
 							<p>${sessionScope.sessionVo.userName}님환영합니다!</p>
 						</c:otherwise>
 					</c:choose>
-					<c:if test="${!empty fail}">
-						<p>아이디중복으로인한 회원가입실패</p>
-					</c:if>
 				</div>
 			</div>
 			<nav>
@@ -60,34 +57,32 @@
 			<article id="intro">
 				<h2 class="major">소개</h2>
 				<div>
-					<p>주류선택 후 랜덤한 안주를 추천해주는 용도</p>
+					<p>원하는 술 누르면 랜덤한 안주 3개를 추천해주고 간단한 한줄평</p>
 				</div>
 			</article>
 
 			<article id="choiceSul">
 				<h2 class="major">술 클릭!</h2>
-				<div>
-					<input id="soju" type="button" value="소주"
-						onclick="hideMenu(); sojuRandomFood();" />
-						<input id="registHaksa"
-						type="button" value="맥주" onclick="hideMenu(); beerRandomFood()" />
-						<input
-						id="registHaksa" type="button" value="와인"
-						onclick="hideMenu(); wineRandomFood()" />
-						<input id="registHaksa"
-						type="button" value="보드카" onclick="hideMenu(); vodkaRandomFood()" />
-						<input
-						id="registHaksa" type="button" value="위스키"
-						onclick="hideMenu(); whiskeyRandomFood()" />
-				</div>
-				<div id="randomFoodList">
-					<p id="goFoodEva">안주 클릭하면 한줄평 보러가짐</p>
-					<button type="button" class="showFood" id="showFood1">randomfood1</button>
-					<button type="button" class="showFood" id="showFood2">randomfood2</button>
-					<button type="button" class="showFood" id="showFood3">randomfood3</button>
+				<div id="moveCenter">
+					<div>
+						<input id="soju" type="button" value="소주"
+							onclick="hideMenu(); sojuRandomFood();" /> <input id="beer"
+							type="button" value="맥주" onclick="hideMenu(); beerRandomFood()" />
+						<input id="wine" type="button" value="와인"
+							onclick="hideMenu(); wineRandomFood()" /> <input id="vodka"
+							type="button" value="보드카" onclick="hideMenu(); vodkaRandomFood()" />
+						<input id="whiskey" type="button" value="위스키"
+							onclick="hideMenu(); whiskeyRandomFood()" />
+					</div>
+					<div id="randomFoodList">
+						<p id="goFoodEva">마음에 안들면 다시 클릭</p>
+						<button type="submit" class="showFood" id="showFood1">randomfood1</button>
+						<button type="submit" class="showFood" id="showFood2">randomfood2</button>
+						<button type="submit" class="showFood" id="showFood3">randomfood3</button>
+					</div>
 				</div>
 				<div id="showBoardList">
-					<input type="button" value="전체 한줄평 보러가기" id="showBoardList" />
+					<button type="submit" value="" id="showBoardList">추천안주후기보러가기</button>
 				</div>
 
 			</article>
@@ -95,7 +90,7 @@
 			<!-- Board-->
 			<article id="board">
 				<h2 class="major">게시판</h2>
-				<form method="post" name="goBoard"  accept-charset="UTF-8">
+				<form method="post" name="goBoard" accept-charset="UTF-8">
 					<table border="1">
 						<tr>
 							<th>글번호</th>
@@ -208,14 +203,19 @@
 				<h2 class="major">내정보</h2>
 				<table>
 					<tr>
+						<td>이름</td>
+						<td><input type="text" name="userName"
+							value="${sessionScope.sessionVo.userName}" readonly="readonly"></td>
+					</tr>
+					<tr>
 						<td>아이디</td>
 						<td><input type="text" name="userId"
 							value="${sessionScope.sessionVo.userId}" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<td>이름</td>
-						<td><input type="text" name="userName"
-							value="${sessionScope.sessionVo.userName}" readonly="readonly"></td>
+						<td>작성 게시글 수</td>
+						<td><input type="text" name="writeCount"
+							value="${sessionScope.cnt}" readonly="readonly"></td>
 					</tr>
 					<tr>
 						<td><button type="button"
@@ -228,9 +228,14 @@
 			</article>
 
 			<article id="myInfoEdit">
-				<h2 class="major">내정보</h2>
+				<h2 class="major">비밀번호변경</h2>
 				<form method="post" accept-charset="UTF-8">
 					<table border="1">
+						<tr>
+							<td>이름</td>
+							<td><input type="text" name="userName"
+								value="${sessionScope.sessionVo.userName}" readonly="readonly"></td>
+						</tr>
 						<tr>
 							<td>아이디</td>
 							<!-- 세션값을 빼올때는 sessionScope.세션이름.세션에있는값 으로 작성하면된다 -->
@@ -241,11 +246,6 @@
 							<td>비밀번호</td>
 							<td><input type="text" name="userPw" placeholder="변경할비밀번호입력"
 								required="required"></td>
-						</tr>
-						<tr>
-							<td>이름</td>
-							<td><input type="text" name="userName"
-								value="${sessionScope.sessionVo.userName}" readonly="readonly"></td>
 						</tr>
 						<tr>
 							<td><button type="submit" formaction="userInfoEdit"

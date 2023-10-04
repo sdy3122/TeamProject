@@ -152,7 +152,7 @@ function beerRandomFood() {
 }
 
 // 와인
-function beerRandomFood() {
+function wineRandomFood() {
 	$("#randomFoodList").fadeToggle();
 	
 	// 와인안주 목록 작성, 추가
@@ -194,7 +194,7 @@ function beerRandomFood() {
 }
 
 // 보드카
-function beerRandomFood() {
+function vodkaRandomFood() {
 	$("#randomFoodList").fadeToggle();
 	
 	// 보드카안주 목록 작성, 추가
@@ -236,7 +236,7 @@ function beerRandomFood() {
 }
 
 // 위스키
-function beerRandomFood() {
+function whiskeyRandomFood() {
 	$("#randomFoodList").fadeToggle();
 	
 	// 위스키안주 목록 작성, 추가
