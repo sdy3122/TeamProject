@@ -23,24 +23,28 @@
 			<article id="login">
 				<h2 class="major">로그인 실패</h2>
 				<form method="post" action="login" name="loginHard"
-					onsubmit="return loginEmptyCheck(this)" accept-charset="UTF-8">
+					accept-charset="UTF-8">
 					<div class="fields">
 						<div class="field half">
 							<label for="ID">아이디</label> <input type="text" id="userId"
-								placeholder="아이디 입력" name="userId">
+								placeholder="아이디 입력" name="userId" required="required">
 						</div>
 						<div class="field half">
 							<label for="PW">비밀번호</label> <input type="password" id="userPw"
-								placeholder="비밀번호 입력" name="userPw">
+								placeholder="비밀번호 입력" name="userPw" required="required">
 						</div>
 					</div>
-					<button type="submit" class="primary">로그인</button>
+					<div class="btnFields">
+						<div class="field half">
+							<button type="submit" class="primary">로그인</button>
 					<button type="button" onclick="location.href='#findId'"
 						class="primary">ID찾기</button>
 					<button type="button" onclick="location.href='#findPw'"
 						class="primary">PW찾기</button>
 					<button type="button" onclick="location.href='#regist'"
 						class="primary">회원가입</button>
+						</div>
+					</div>
 					<p>
 						<br><a href="/controller/">메인화면</a>
 					</p>
@@ -74,6 +78,11 @@
 								id="rn2" placeholder="주민등록번호 뒷자리" maxlength="7"
 								required="required"
 								onkeyup="moveNext(this,7,document.findId.sendBtn)">
+						</div>
+					</div>
+					<div class="myFields" id="RnDupWarning">
+						<div class="myField">
+							<label class="myLabel" for="RnLabelWarning">RNRNRNRN</label>
 						</div>
 					</div>
 					<ul class="actions">
@@ -130,12 +139,12 @@
 					onsubmit="return formCheck(this)" accept-charset="UTF-8">
 					<div class="fields">
 						<div class="field half">
-							<label for="ID">아이디 15자내</label> <input type="text" id="registID"
+							<label for="ID">아이디 15자내</label> <input type="text" id="userId"
 								name="userId" required="required" placeholder="아이디 입력"
 								maxlength="15" onkeydown="inputIDCheck">
 						</div>
 						<div class="field half">
-							<label for="irum">이름 10자내</label> <input type="text" id="irum"
+							<label for="irum">이름 10자내</label> <input type="text" id="userName"
 								maxlength="10" name="userName" placeholder="이름 입력"
 								required="required">
 						</div>

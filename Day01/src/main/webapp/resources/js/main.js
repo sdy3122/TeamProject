@@ -1,6 +1,517 @@
+// 추가한 함수
+// 아이디 중복
+$('#IdDupCheck').click(function() {
+	let userId = $('#inputUserId').val();
+	if (userId.trim().length == 0) {
+		alert('뭐라도 입력해라');
+	} else {
+		console.log(userId);
+		$.ajax({
+			url : "idCheck",
+			type : "post",
+			async : false,
+			data : {
+				sdy : userId
+			},
+			dataType : 'json',
+			success : function(result) {
+				if (result == 0) {
+					$('#IdDupWarning').css("display", "none");
+					$('#IdDupWarning').css("display", "block");
+					$('label[for="IdLabelWarning"]').css('color', '#00ffad');
+					$('label[for="IdLabelWarning"]').text('아이디 사용가능!');
+					$('#DupCheck').attr('value','Check');
+					$('#inputUserId').attr('readonly', true);
+				} else {
+					$('#IdDupWarning').css("display", "none");
+					$('#IdDupWarning').css("display", "block");
+					$('label[for="IdLabelWarning"]').css('color', 'rgb(255 167 0)');
+					$('label[for="IdLabelWarning"]').text('아이디 중복 다시입력');
+					$('#DupCheck').attr('value','UnCheck');
+					$('#inputUserId').val('');
+				}
+			},
+			error : function() {
+				alert("서버요청실패");
+			}
+		});
+	}
+});
+
+// 아이디 재입력
+function reInput() {
+	$('#IdDupWarning').css("display", "none");
+	$('#inputUserId').attr('readonly', false);
+	$('#DupCheck').attr('value','UnCheck');
+	$('#inputUserId').val('');
+}
+
+// 비밀번호 확인
+function checkPw() {
+	let pw = document.getElementById('registPW').value;
+	if (pw.length < 4) {
+		$('#PwDupWarning').css("display", "none");
+		$('#PwDupWarning').css("display", "block");
+		$('label[for="PwLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="PwLabelWarning"]').text('비밀번호는 4자이상으로 작성해주세요');
+		document.getElementById('registPW').value = '';
+	}
+	if (pw != '' && document.getElementById('checkPW').value != '') {
+		if (pw == document.getElementById('checkPW').value) {
+			$('#PwDupWarning').css("display", "none");
+			$('#PwDupWarning').css("display", "block");
+			$('label[for="PwLabelWarning"]').css('color', '#00ffad');
+			$('label[for="PwLabelWarning"]').text('비밀번호일치!');
+		} else {
+			$('#PwDupWarning').css("display", "none");
+			$('#PwDupWarning').css("display", "block");
+			$('label[for="PwLabelWarning"]').css('color', 'rgb(255 167 0)');
+			$('label[for="PwLabelWarning"]').text('비밀번호 불일치 다시입력');
+			document.getElementById('checkPW').value = '';
+		}
+	}
+}
+
+// 비밀번호 변경 확인
+function checkNewPw() {
+	let newPw = document.getElementById('newRegistPw').value;
+	if (newPw.length < 4) {
+		$('#NewPwDupWarning').css("display", "none");
+		$('#NewPwDupWarning').css("display", "block");
+		$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="NewPwLabelWarning"]').text('비밀번호는 4자이상으로 작성해주세요');
+		document.getElementById('newRegistPw').value = '';
+	}
+	if (newPw != '' && document.getElementById('newCheckPw').value != '') {
+		if (newPw == document.getElementById('newCheckPw').value) {
+			$('#NewPwDupWarning').css("display", "none");
+			$('#NewPwDupWarning').css("display", "block");
+			$('label[for="NewPwLabelWarning"]').css('color', '#00ffad');
+			$('label[for="NewPwLabelWarning"]').text('비밀번호일치!');
+		} else {
+			$('#NewPwDupWarning').css("display", "none");
+			$('#NewPwDupWarning').css("display", "block");
+			$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 167 0)');
+			$('label[for="NewPwLabelWarning"]').text('비밀번호 불일치 다시입력');
+			document.getElementById('newCheckPw').value = '';
+		}
+	}
+}
+
+
+// 비밀번호 변경 form확인
+function changePwAjax() {
+	let moveSuccessOrFail = true;
+	let userPw = $('#nowPw').val();
+	$.ajax({
+		url : "pwCheck",
+		type : "post",
+		async : false,
+		data : {
+			reqPw : userPw
+		},
+		dataType : 'json',
+		success : function(result) {
+			if (result == 1) {
+				moveSuccessOrFail = false;
+				$('#NewPwDupWarning').css("display", "none");
+				document.getElementById('nowPw').value = '';
+				document.getElementById('newRegistPw').value = '';
+				document.getElementById('newCheckPw').value = '';
+				alert("현재비밀번호 틀림");
+			}
+		},
+		error : function() {
+			alert("서버요청실패");
+		}
+	});
+	return moveSuccessOrFail;
+}
+
+function changePw() {
+	let nowPw2 = $('#nowPw').val();
+	let newCheckPw2 = $('#newCheckPw').val();
+	if (nowPw2 == newCheckPw2) {
+	$('#NewPwDupWarning').css("display", "none");
+		$('#NewPwDupWarning').css("display", "block");
+		$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="NewPwLabelWarning"]').text('현재 비밀번호와 새 비밀번호를 다르게 입력하세요');
+		document.getElementById('newRegistPw').value = '';
+		document.getElementById('newCheckPw').value = '';
+		return false;
+	}
+	return changePwAjax();
+}
+
+
+
+// 주민번호 앞자리 6자 다입력하면 바로 뒷자리입력하게 커서변경됨
+function moveNext(obj, length, nextObj) {
+	if (obj.value.length == length) {
+		nextObj.focus();
+	}
+}
+
+function formCheck(obj) {
+	if (obj.rn1.value.trim().length !== 6) {
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('주민등록번호 앞자리는 6자리');
+		obj.rn1.value = "";
+		obj.rn1.focus();
+		return false;
+	}
+	// NaN = Not a Number, Number()는 인수를 숫자로변경
+	if (isNaN(Number(obj.rn1.value))) {
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('주민등록번호 앞자리는 숫자만 입력');
+		obj.rn1.value = "";
+		obj.rn1.focus();
+		return false;
+	}
+	if (obj.rn2.value.trim().length !== 7) {
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('주민등록번호 뒷자리는 7자리');
+		obj.rn2.value = "";
+		obj.rn2.focus();
+		return false;
+	}
+	if (isNaN(Number(obj.rn2.value))) {
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('주민번호 뒷자리는 숫자만 입력');
+		obj.rn2.value = "";
+		obj.rn2.focus();
+		return false;
+	}
+	if (obj.DupCheck.value!="Check"){
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('아이디중복체크');
+		return false;
+	}
+	// 주민번호 유효성검사
+	rnCheck = obj.rn1.value.trim() + obj.rn2.value.trim();
+	sum = 0;
+	for (i = 0; i < 12; i++) {
+		sum += rnCheck.charAt(i) * (i < 8 ? i + 2 : i - 6);
+	}
+	result = (11 - sum % 11);
+	if (result != rnCheck.charAt(12)) {
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('주민등록 번호가 올바르지 않습니다');
+		obj.rn2.value = "";
+		obj.rn2.focus();
+		return false;
+	}
+	
+	return checkRn();
+}
+
+function formCheckSimple(obj) {
+	if (obj.rn1.value.trim().length !== 6) {
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('주민등록번호 앞자리는 6자리');
+		obj.rn1.value = "";
+		obj.rn1.focus();
+		return false;
+	}
+	// NaN = Not a Number, Number()는 인수를 숫자로변경
+	if (isNaN(Number(obj.rn1.value))) {
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('주민등록번호 앞자리는 숫자만 입력');
+		obj.rn1.value = "";
+		obj.rn1.focus();
+		return false;
+	}
+	if (obj.rn2.value.trim().length !== 7) {
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('주민등록번호 뒷자리는 7자리');
+		obj.rn2.value = "";
+		obj.rn2.focus();
+		return false;
+	}
+	if (isNaN(Number(obj.rn2.value))) {
+		$('#RnDupWarning').css("display", "none");
+		$('#RnDupWarning').css("display", "block");
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').text('주민번호 뒷자리는 숫자만 입력');
+		obj.rn2.value = "";
+		obj.rn2.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+function checkRn(){
+	// 주민등록번호 중복체크
+	let trueOrFalse = true;
+	$.ajax({
+		url : "rnCheck",
+		type : "post",
+		async : false,
+		data : {
+			checkRegistNumber : rnCheck
+		},
+		dataType : 'json',
+		success : function(result) {
+			if (result != 0) {
+				trueOrFalse = false;
+				$('#RnDupWarning').css("display", "none");
+				$('#RnDupWarning').css("display", "block");
+				$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+				$('label[for="RnLabelWarning"]').text('해당주민등록번호로 회원가입된 아이디있음');
+			}
+		},
+		error : function() {
+			trueOrFalse = false;
+			alert("서버요청실패");
+		}
+	});
+	return trueOrFalse;
+}
+
+// 랜덤메뉴 생성
+// 소주
+function sojuRandomFood() {
+	$("#randomFoodList").fadeToggle();
+	
+	// 소주안주 목록 작성, 추가
+	var sulFoodList = [
+	"김치찌개",
+	"김치전",
+	"김치",
+	"치킨",
+	"파스타",
+	"닭발",
+	"곱창",
+	"화채"
+	];
+	
+	let randomThree = [];
+	for(var i = 0; i < 3; i++) {
+		let n = Math.floor(Math.random() * sulFoodList.length);
+		if (! sameNum(n)) {
+      		randomThree.push(n);
+    	} else {
+      		i--;
+    	}
+  	}
+  	
+	function sameNum (n) {
+		return randomThree.find((e) => (e === n));
+	}
+	
+	const sulFood1 = sulFoodList[randomThree[0]];
+	const sulFood2 = sulFoodList[randomThree[1]];
+	const sulFood3 = sulFoodList[randomThree[2]];
+	const html = '<div style="color:black; font-weight:bold;"/>';
+	const foodBtnElement1 = document.getElementById("showFood1");
+	foodBtnElement1.innerHTML = html + sulFood1;
+	const foodBtnElement2 = document.getElementById("showFood2");
+	foodBtnElement2.innerHTML = html + sulFood2;
+	const foodBtnElement3 = document.getElementById("showFood3");
+	foodBtnElement3.innerHTML = html + sulFood3;
+	
+}
+
+// 맥주
+function beerRandomFood() {
+	$("#randomFoodList").fadeToggle();
+	
+	// 맥주안주 목록 작성, 추가
+	var sulFoodList = [
+	"견과류",
+	"김치전",
+	"튀김",
+	"치킨",
+	"과자",
+	"닭발",
+	"곱창",
+	];
+	
+	let randomThree = [];
+	for(var i = 0; i < 3; i++) {
+		let n = Math.floor(Math.random() * sulFoodList.length);
+		if (! sameNum(n)) {
+      		randomThree.push(n);
+    	} else {
+      		i--;
+    	}
+  	}
+  	
+	function sameNum (n) {
+		return randomThree.find((e) => (e === n));
+	}
+	
+	const sulFood1 = sulFoodList[randomThree[0]];
+	const sulFood2 = sulFoodList[randomThree[1]];
+	const sulFood3 = sulFoodList[randomThree[2]];
+	const html = '<div style="color:black; font-weight:bold;"/>';
+	const foodBtnElement1 = document.getElementById("showFood1");
+	foodBtnElement1.innerHTML = html + sulFood1;
+	const foodBtnElement2 = document.getElementById("showFood2");
+	foodBtnElement2.innerHTML = html + sulFood2;
+	const foodBtnElement3 = document.getElementById("showFood3");
+	foodBtnElement3.innerHTML = html + sulFood3;
+	
+}
+
+// 와인
+function wineRandomFood() {
+	$("#randomFoodList").fadeToggle();
+	
+	// 와인안주 목록 작성, 추가
+	var sulFoodList = [
+	"파스타",
+	"김치전",
+	"튀김",
+	"치킨",
+	"과자",
+	"닭발",
+	"곱창",
+	];
+	
+	let randomThree = [];
+	for(var i = 0; i < 3; i++) {
+		let n = Math.floor(Math.random() * sulFoodList.length);
+		if (! sameNum(n)) {
+      		randomThree.push(n);
+    	} else {
+      		i--;
+    	}
+  	}
+  	
+	function sameNum (n) {
+		return randomThree.find((e) => (e === n));
+	}
+	
+	const sulFood1 = sulFoodList[randomThree[0]];
+	const sulFood2 = sulFoodList[randomThree[1]];
+	const sulFood3 = sulFoodList[randomThree[2]];
+	const html = '<div style="color:black; font-weight:bold;"/>';
+	const foodBtnElement1 = document.getElementById("showFood1");
+	foodBtnElement1.innerHTML = html + sulFood1;
+	const foodBtnElement2 = document.getElementById("showFood2");
+	foodBtnElement2.innerHTML = html + sulFood2;
+	const foodBtnElement3 = document.getElementById("showFood3");
+	foodBtnElement3.innerHTML = html + sulFood3;
+	
+}
+
+// 보드카
+function vodkaRandomFood() {
+	$("#randomFoodList").fadeToggle();
+	
+	// 보드카안주 목록 작성, 추가
+	var sulFoodList = [
+	"파스타",
+	"김치전",
+	"튀김",
+	"치킨",
+	"과자",
+	"닭발",
+	"곱창",
+	];
+	
+	let randomThree = [];
+	for(var i = 0; i < 3; i++) {
+		let n = Math.floor(Math.random() * sulFoodList.length);
+		if (! sameNum(n)) {
+      		randomThree.push(n);
+    	} else {
+      		i--;
+    	}
+  	}
+  	
+	function sameNum (n) {
+		return randomThree.find((e) => (e === n));
+	}
+	
+	const sulFood1 = sulFoodList[randomThree[0]];
+	const sulFood2 = sulFoodList[randomThree[1]];
+	const sulFood3 = sulFoodList[randomThree[2]];
+	const html = '<div style="color:black; font-weight:bold;"/>';
+	const foodBtnElement1 = document.getElementById("showFood1");
+	foodBtnElement1.innerHTML = html + sulFood1;
+	const foodBtnElement2 = document.getElementById("showFood2");
+	foodBtnElement2.innerHTML = html + sulFood2;
+	const foodBtnElement3 = document.getElementById("showFood3");
+	foodBtnElement3.innerHTML = html + sulFood3;
+	
+}
+
+// 위스키
+function whiskeyRandomFood() {
+	$("#randomFoodList").fadeToggle();
+	
+	// 위스키안주 목록 작성, 추가
+	var sulFoodList = [
+	"견과류",
+	"김치전",
+	"튀김",
+	"치킨",
+	"과자",
+	"닭발",
+	"곱창",
+	];
+	
+	let randomThree = [];
+	for(var i = 0; i < 3; i++) {
+		let n = Math.floor(Math.random() * sulFoodList.length);
+		if (! sameNum(n)) {
+      		randomThree.push(n);
+    	} else {
+      		i--;
+    	}
+  	}
+  	
+	function sameNum (n) {
+		return randomThree.find((e) => (e === n));
+	}
+	
+	const sulFood1 = sulFoodList[randomThree[0]];
+	const sulFood2 = sulFoodList[randomThree[1]];
+	const sulFood3 = sulFoodList[randomThree[2]];
+	const html = '<div style="color:black; font-weight:bold;"/>';
+	const foodBtnElement1 = document.getElementById("showFood1");
+	foodBtnElement1.innerHTML = html + sulFood1;
+	const foodBtnElement2 = document.getElementById("showFood2");
+	foodBtnElement2.innerHTML = html + sulFood2;
+	const foodBtnElement3 = document.getElementById("showFood3");
+	foodBtnElement3.innerHTML = html + sulFood3;
+	
+}
+
+// 메뉴 숨기기
+function hideMenu() {
+	document.querySelector('#randomFoodList').style.display = "none";
+}
+
+function warningHideAndShow() {
+	document.querySelector('.myFields').style.display = "none";
+}
+
+
+// 기존
 (function($) {
 
-	// 기존
 	var $window = $(window),
 		$body = $('body'),
 		$wrapper = $('#wrapper'),

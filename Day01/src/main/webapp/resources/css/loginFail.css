@@ -9,17 +9,27 @@
 	margin : 1em 0em 0em 0em;
 }
 
+
 #goFoodEva {
 	margin : 0em 0em 0.5em 0em;
 }
 
 #showBoardList {
 	margin : 1em 0em 1em 0em;
+	display : block;
+}
+
+#moveCenter {
+	text-align: center;
+}
+
+div input {
+	width : 100px;
 }
 
 .showFood {
+	width : 100px;
 	background-color: white !important;
-	color : black !important;
 }
 
 #intro ul li {
@@ -32,6 +42,11 @@
 	top: 140px;
 	right: 50px;
 }
+
+.myFields {
+	display : none;	
+}
+
 .primary {
 	margin-right: 10px;
 }
@@ -124,7 +139,7 @@ html {
 }
 
 body {
-	background: #ff3e3eb3;
+	background: #1b1f22;
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -342,7 +357,7 @@ form>.fields {
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	width: calc(100% + 3rem);
-	margin: -1.5rem 0 2rem -1.5rem;
+	margin: 0 0 0 -1.5rem;
 }
 
 form>.fields>.field {
@@ -393,12 +408,82 @@ form>.fields>.field.quarter {
 label {
 	color: #ffffff;
 	display: block;
-	font-size: 0.8rem;
-	font-weight: 300;
-	letter-spacing: 0.2rem;
+	font-size: 1rem;
+	font-weight: 500;
+	letter-spacing: 0.1rem;
 	line-height: 1.5;
 	margin: 0.4rem 0 0.2rem 0;
 	text-transform: uppercase;
+}
+/* alert창 대신 밑에 경고하기 label하고 div새로 */
+.myLabel {
+	color: #fff700;
+	display: block;
+	font-size: 0.8rem;
+	letter-spacing: 0rem;
+	line-height: 1.5;
+	margin: 0 0 0.2rem 0;
+	text-transform: uppercase;
+}
+form>.myFields>.myField {
+	-moz-flex-grow: 0;
+	-webkit-flex-grow: 0;
+	-ms-flex-grow: 0;
+	flex-grow: 0;
+	-moz-flex-shrink: 0;
+	-webkit-flex-shrink: 0;
+	-ms-flex-shrink: 0;
+	flex-shrink: 0;
+	padding: 0;
+	width: calc(100% - 1.5rem);
+}
+form>.myFields>.myField.half {
+	width: calc(50% - 0.75rem);
+}
+
+form>.myFields>.myField.third {
+	width: calc(100%/ 3 - 0.5rem);
+}
+
+form>.myFields>.myField.quarter {
+	width: calc(25% - 0.375rem);
+}
+
+@media screen and (max-width: 480px) {
+	form>.myFields {
+		width: calc(100% + 3rem);
+		margin: -1.5rem 0 2rem -1.5rem;
+	}
+	form>.myFields>.myField {
+		padding: 1.5rem 0 0 1.5rem;
+		width: calc(100% - 1.5rem);
+	}
+	form>.myFields>.myField.half {
+		width: calc(100% - 1.5rem);
+	}
+	form>.myFields>.myField.third {
+		width: calc(100% - 1.5rem);
+	}
+	form>.myFields>.myField.quarter {
+		width: calc(100% - 1.5rem);
+	}
+}
+
+form>.btnFields {
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-moz-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	width: calc(100% + 3rem);
+	margin: 2rem 0 0 0;
+}
+
+#inputPw {
+	margin-bottom: 2rem;
 }
 
 input[type="text"], input[type="password"], input[type="email"], input[type="tel"],
@@ -1095,8 +1180,7 @@ input[type="submit"], input[type="reset"], input[type="button"], button
 	-webkit-transition-delay: 0.75s;
 	-ms-transition-delay: 0.75s;
 	transition-delay: 0.75s;
-	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5),
-		rgba(0, 0, 0, 0.5)), url("../../images/overlay.png");
+	background-image: linear-gradient(to top, rgb(126 255 250 / 14%), rgb(48 255 24 / 49%)), url(../../images/overlay.png);
 	background-size: auto, 256px 256px;
 	background-position: center, center;
 	background-repeat: no-repeat, repeat;
@@ -1133,8 +1217,9 @@ body.is-article-visible #bg:after {
 	filter: blur(0.2rem);
 }
 
+/* 대기화면 색상 변경 */
 body.is-preload #bg:before {
-	background-color: #ffffff;
+	background-color: rgb(45 249 213 / 31%);
 }
 
 /* Wrapper */
@@ -1216,6 +1301,7 @@ body.is-preload #bg:before {
 	background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%,
 		rgba(0, 0, 0, 0) 55%);
 	max-width: 100%;
+	text-align: center;
 }
 
 #header>* {
@@ -1491,7 +1577,9 @@ body.is-preload #header .content .inner {
 	position: relative;
 	width: 40rem;
 	max-width: 100%;
-	background-color: rgb(69 46 46 / 38%);
+	/* div배경색 넣고싶으면 여기 background-color 추가, 변경사항 */
+	border : solid;
+	border-color: #8ff98f;
 	border-radius: 4px;
 	opacity: 0;
 }

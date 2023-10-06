@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.mappers.SojuMapper;
+import kr.co.mappers.UserMapper;
 import kr.co.service.UserService;
 import kr.co.vo.SojuVo;
 import kr.co.vo.UserVo;
@@ -26,7 +28,9 @@ public class UserController {
 	private UserService service;
 	@Autowired
 	private SojuMapper sojuMapper;
-
+	@Autowired
+	private UserMapper userMapper;
+	
 	@GetMapping(value = { "/" })
 	public String home(Model model) {
 		return "index";
@@ -96,6 +100,19 @@ public class UserController {
 		return "index";
 	}
 
+	@ResponseBody
+	@PostMapping("/pwCheck")
+	public int pwCheck(HttpServletRequest req, @RequestParam String reqPw) {
+		HttpSession session = req.getSession(false);
+		UserVo vo = (UserVo) session.getAttribute("sessionVo");
+		String nowPw = vo.getUserPw();
+		if (nowPw.equals(reqPw)) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
+	
 	@PostMapping("/userInfoEdit")
 	public String infoEdit(HttpServletRequest req, @RequestParam String userPw) {
 		HttpSession session = req.getSession(false);
@@ -157,6 +174,22 @@ public class UserController {
 			model.addAttribute("inputId", userId);
 			return "findAnyPw";
 		}
+	}
+	
+	@ResponseBody
+	@PostMapping("/idCheck")
+	public int idCheck(HttpServletRequest req) {
+		String id = req.getParameter("sdy");
+		int countDupId = userMapper.findSameId(id).size();
+		return countDupId;
+	}
+
+	@ResponseBody
+	@PostMapping("/rnCheck")
+	public int rnCheck(HttpServletRequest req) {
+		String rn = req.getParameter("checkRegistNumber");
+		int countDupRn = userMapper.findSameRn(rn).size();
+		return countDupRn;
 	}
 	
 	@GetMapping("/board")

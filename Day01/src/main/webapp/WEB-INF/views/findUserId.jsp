@@ -109,7 +109,6 @@
 	<script src="${path}/resources/js/breakpoints.min.js"></script>
 	<script src="${path}/resources/js/util.js"></script>
 	<script src="${path}/resources/js/main.js"></script>
-	<script src="${path}/resources/js/loginFail.js"></script>
 	<!-- 추가 스크립트 -->
 	<script>
 		
