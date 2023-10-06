@@ -10,4 +10,9 @@
 		select * from users_tb where
 		registNumber = #{rn}
 	</select>
+	
+	<select id="beforeLogin" resultType="UserVo" parameterType="UserVo">
+		select * from users_tb where
+		userId = #{userId} and userPw = #{userPw}
+	</select>
 </mapper>

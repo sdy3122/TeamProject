@@ -51,8 +51,19 @@ public class UserController {
 
 		return "index";
 	}
+	
+	@ResponseBody
+	@PostMapping("/loginCheck")
+	public int loginCheck(HttpServletRequest req, @RequestParam String reqId, @RequestParam String reqPw) {
+		UserVo vo = new UserVo();
+		vo.setUserId(reqId);
+		vo.setUserPw(reqPw);
+		int passOrNo = userMapper.beforeLogin(vo).size();
+		System.out.println(passOrNo);
+		return passOrNo;
+	}
 
-	@PostMapping(value = { "/regist/login", "/login" })
+	@PostMapping("/login")
 	public String loginAfter(@RequestParam String userId, @RequestParam String userPw, HttpServletRequest req) {
 		UserVo vo = new UserVo();
 		vo = service.selectUserById(userId);

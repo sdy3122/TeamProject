@@ -39,7 +39,6 @@
 						<c:when test="${empty check}">
 							<li><a href="#intro">소개</a></li>
 							<li><a href="#login">로그인</a></li>
-							<li><a href="#regist">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="#choiceSul">술 선택</a></li>
@@ -50,9 +49,9 @@
 				</ul>
 			</nav>
 			<div class="miniMenu">
-				<a href="location.href='#findId'">아이디 찾기</a>
-				<a href="location.href='#findPw'">비밀번호 찾기</a>
-				<a href="location.href='#regist'">회원가입</a>
+				<a href="#findId" id="firstA">아이디 찾기</a>
+				<a href="#findPw">비밀번호 찾기</a>
+				<a href="#regist" id="lastA">회원가입</a>
 			</div>
 		</header>
 
@@ -95,18 +94,23 @@
 			<!-- Login -->
 			<article id="login">
 				<h2 class="major">로그인</h2>
-				<form method="post" action="login" accept-charset="UTF-8">
+				<form method="post" action="login"
+					onsubmit="return loginCheckInfo()" accept-charset="UTF-8">
 					<div class="fields">
 						<div class="field half">
-							<label for="ID">아이디</label> <input type="text" id="inputID"
+							<label for="ID">아이디</label> <input type="text" id="inputLoginId"
 								placeholder="아이디 입력" name="userId" required="required">
 						</div>
 						<div class="field half">
-							<label for="PW">비밀번호</label> <input type="password" id="iputPW"
+							<label for="PW">비밀번호</label> <input type="password" id="inputLoginPw"
 								placeholder="비밀번호 입력" name="userPw" required="required">
 						</div>
 					</div>
-
+					<div class="myFields" id="loginInputDiv">
+						<div class="myField">
+							<label class="myLabel" for="loginInputLabel">loglogloglog</label>
+						</div>
+					</div>
 					<div class="btnFields">
 						<div class="field">
 							<input type="submit" value="로그인" class="primary" />
@@ -282,7 +286,7 @@
 			<article id="findId">
 				<h2 class="major">아이디찾기</h2>
 				<form method="post" action="findId" name="findId"
-					onsubmit="return formCheck(this)" accept-charset="UTF-8">
+					onsubmit="return formCheckFindId(this)" accept-charset="UTF-8">
 					<div class="fields">
 						<div class="field half">
 							<label for="Name">이름입력</label> <input type="text" id="userName"
@@ -304,30 +308,30 @@
 								onkeyup="moveNext(this,7,document.findId.sendBtn)">
 						</div>
 					</div>
-					<div class="myFields" id="RnDupWarning">
+					<div class="myFields" id="SRnDupWarningId">
 						<div class="myField">
-							<label class="myLabel" for="RnLabelWarning">RNRNRNRN</label>
+							<label class="myLabel" for="SRnLabelWarningId">RNRNRNRN</label>
 						</div>
 					</div>
-					<ul class="actions">
-						<li><input type="submit" value="ID찾기" class="primary"
-							name="sentBtn" /></li>
-					</ul>
+					<div class="btnFields">
+						<div class="field half">
+							<input type="submit" value="찾기" class="primary"
+							name="sentBtn" />
+						</div>
+					</div>
 				</form>
 			</article>
 
 			<article id="findPw">
 				<h2 class="major">비밀번호찾기</h2>
 				<form method="post" action="findPw" name="findPw"
-					onsubmit="return formCheck(this)" accept-charset="UTF-8">
+					onsubmit="return formCheckFindPw(this)" accept-charset="UTF-8">
 					<div class="fields">
 						<div class="field half">
 							<label for="Name">이름입력</label> <input type="text" id="userName"
 								name="userName" required="required" placeholder="이름 입력"
 								maxlength="10">
 						</div>
-					</div>
-					<div class="fields">
 						<div class="field half">
 							<label for="ID">아이디입력</label> <input type="text" id="userId"
 								name="userId" required="required" placeholder="아이디 입력"
@@ -348,10 +352,17 @@
 								onkeyup="moveNext(this,7,document.findPw.sendBtn)">
 						</div>
 					</div>
-					<ul class="actions">
-						<li><input type="submit" value="비밀번호찾기" class="primary"
-							name="sentBtn" /></li>
-					</ul>
+					<div class="myFields" id="SRnDupWarningPw">
+						<div class="myField">
+							<label class="myLabel" for="SRnLabelWarningPw">RNRNRNRN</label>
+						</div>
+					</div>
+					<div class="btnFields">
+						<div class="field half">
+							<input type="submit" value="찾기" class="primary"
+							name="sentBtn" />
+						</div>
+					</div>
 				</form>
 			</article>
 			<!-- 여가 끝남 -->
@@ -366,10 +377,8 @@
 
 	<!-- BG -->
 	<div id="bg"></div>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- Scripts -->
-	<script src="${path}/resources/js/jquery.min.js"></script>
 	<script src="${path}/resources/js/browser.min.js"></script>
 	<script src="${path}/resources/js/breakpoints.min.js"></script>
 	<script src="${path}/resources/js/util.js"></script>

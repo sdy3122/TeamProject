@@ -24,29 +24,30 @@
 				<h2 class="major">비밀번호조회결과</h2>
 				<form method="post" accept-charset="UTF-8">
 					<table>
-					<tr>
-						<td>이름</td>
-						<td><input type="text" name="userName"
-							value="${inputName}" readonly="readonly"></td>
-					</tr>
-					<tr>
-						<td>주민등록번호 앞자리</td>
-						<td><input type="text" name="userRn1"
-							value="${inputRn1}" readonly="readonly"></td>
-					</tr>
-					<tr>
-						<td>아이디</td>
-						<td><input type="text" name="userId"
-							value="${inputId}" readonly="readonly"></td>
-					</tr>
-					<tr>
-						<td>조회된 비밀번호</td>
-						<td><input type="text" name="userPw"
-							value="${findPw}" readonly="readonly"></td>
-					</tr>
-				</table>
-					<button type="submit" formaction="/controller"
-						class="primary">메인화면</button>
+						<tr>
+							<td>이름</td>
+							<td><input type="text" name="userName" value="${inputName}"
+								readonly="readonly"></td>
+						</tr>
+						<tr>
+							<td>주민등록번호 앞자리</td>
+							<td><input type="text" name="userRn1" value="${inputRn1}"
+								readonly="readonly"></td>
+						</tr>
+						<tr>
+							<td>아이디</td>
+							<td><input type="text" name="userId" value="${inputId}"
+								readonly="readonly"></td>
+						</tr>
+						<tr>
+							<td>조회된 비밀번호</td>
+							<td><input type="text" name="userPw" value="${findPw}"
+								readonly="readonly"></td>
+						</tr>
+					</table>
+					<p>
+						<br> <a href="/controller/">메인화면</a>
+					</p>
 				</form>
 			</article>
 		</header>

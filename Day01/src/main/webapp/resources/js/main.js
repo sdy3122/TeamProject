@@ -143,6 +143,39 @@ function changePw() {
 	return changePwAjax();
 }
 
+// 로그인 form확인
+function loginAjax() {
+	let loginSuccessOrFail = true;
+	let userId = $('#inputLoginId').val();
+	let userPw = $('#inputLoginPw').val();
+	$.ajax({
+		url : "loginCheck",
+		type : "post",
+		async : false,
+		data : {
+			reqId : userId,
+			reqPw : userPw
+		},
+		dataType : 'json',
+		success : function(result) {
+			if (result == 0) {
+				loginSuccessOrFail = false;
+				$('#loginInputDiv').css("display", "block");
+				$('label[for="loginInputLabel"]').css('color', 'rgb(255 167 0)');
+				$('label[for="loginInputLabel"]').text('아이디 혹은 비밀번호가 틀렸습니다');
+				document.getElementById('inputLoginPw').value = '';
+			}
+		},
+		error : function() {
+			alert("서버요청실패");
+		}
+	});
+	return loginSuccessOrFail;
+}
+
+function loginCheckInfo() {
+	return loginAjax();
+}
 
 
 // 주민번호 앞자리 6자 다입력하면 바로 뒷자리입력하게 커서변경됨
@@ -217,40 +250,82 @@ function formCheck(obj) {
 	return checkRn();
 }
 
-function formCheckSimple(obj) {
+function formCheckFindId(obj) {
 	if (obj.rn1.value.trim().length !== 6) {
-		$('#RnDupWarning').css("display", "none");
-		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
-		$('label[for="RnLabelWarning"]').text('주민등록번호 앞자리는 6자리');
+		$('#SRnDupWarningId').css("display", "none");
+		$('#SRnDupWarningId').css("display", "block");
+		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningId"]').text('주민등록번호 앞자리는 6자리');
 		obj.rn1.value = "";
 		obj.rn1.focus();
 		return false;
 	}
 	// NaN = Not a Number, Number()는 인수를 숫자로변경
 	if (isNaN(Number(obj.rn1.value))) {
-		$('#RnDupWarning').css("display", "none");
-		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
-		$('label[for="RnLabelWarning"]').text('주민등록번호 앞자리는 숫자만 입력');
+		$('#SRnDupWarningId').css("display", "none");
+		$('#SRnDupWarningId').css("display", "block");
+		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningId"]').text('주민등록번호 앞자리는 숫자만 입력');
 		obj.rn1.value = "";
 		obj.rn1.focus();
 		return false;
 	}
 	if (obj.rn2.value.trim().length !== 7) {
-		$('#RnDupWarning').css("display", "none");
-		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
-		$('label[for="RnLabelWarning"]').text('주민등록번호 뒷자리는 7자리');
+		$('#SRnDupWarningId').css("display", "none");
+		$('#SRnDupWarningId').css("display", "block");
+		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningId"]').text('주민등록번호 뒷자리는 7자리');
 		obj.rn2.value = "";
 		obj.rn2.focus();
 		return false;
 	}
 	if (isNaN(Number(obj.rn2.value))) {
-		$('#RnDupWarning').css("display", "none");
-		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
-		$('label[for="RnLabelWarning"]').text('주민번호 뒷자리는 숫자만 입력');
+		$('#SRnDupWarningId').css("display", "none");
+		$('#SRnDupWarningId').css("display", "block");
+		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningId"]').text('주민번호 뒷자리는 숫자만 입력');
+		obj.rn2.value = "";
+		obj.rn2.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+function formCheckFindPw(obj) {
+	if (obj.rn1.value.trim().length !== 6) {
+		$('#SRnDupWarningPw').css("display", "none");
+		$('#SRnDupWarningPw').css("display", "block");
+		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningPw"]').text('주민등록번호 앞자리는 6자리');
+		obj.rn1.value = "";
+		obj.rn1.focus();
+		return false;
+	}
+	// NaN = Not a Number, Number()는 인수를 숫자로변경
+	if (isNaN(Number(obj.rn1.value))) {
+		$('#SRnDupWarningPw').css("display", "none");
+		$('#SRnDupWarningPw').css("display", "block");
+		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningPw"]').text('주민등록번호 앞자리는 숫자만 입력');
+		obj.rn1.value = "";
+		obj.rn1.focus();
+		return false;
+	}
+	if (obj.rn2.value.trim().length !== 7) {
+		$('#SRnDupWarningPw').css("display", "none");
+		$('#SRnDupWarningPw').css("display", "block");
+		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningPw"]').text('주민등록번호 뒷자리는 7자리');
+		obj.rn2.value = "";
+		obj.rn2.focus();
+		return false;
+	}
+	if (isNaN(Number(obj.rn2.value))) {
+		$('#SRnDupWarningPw').css("display", "none");
+		$('#SRnDupWarningPw').css("display", "block");
+		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningPw"]').text('주민번호 뒷자리는 숫자만 입력');
 		obj.rn2.value = "";
 		obj.rn2.focus();
 		return false;
