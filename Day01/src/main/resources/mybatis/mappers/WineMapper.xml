@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.mappers.SojuMapper">
+<mapper namespace="kr.co.mappers.WineMapper">
 
 	<select id="selectByWriter" resultType="String" parameterType="String">
-		select * from soju
+		select * from wine
 		where writer = #{writer}
 	</select>
 
-	<select id="selectDistinctSojuList" resultType="String">
-		select distinct menu from soju
+	<select id="selectDistinctWineList" resultType="String">
+		select distinct menu from wine
 	</select>
 
 </mapper>

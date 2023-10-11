@@ -18,14 +18,14 @@ $('#IdDupCheck').click(function() {
 				if (result == 0) {
 					$('#IdDupWarning').css("display", "none");
 					$('#IdDupWarning').css("display", "block");
-					$('label[for="IdLabelWarning"]').css('color', '#00ffad');
+					$('label[for="IdLabelWarning"]').css('color', '#369b00');
 					$('label[for="IdLabelWarning"]').text('아이디 사용가능!');
 					$('#DupCheck').attr('value','Check');
 					$('#inputUserId').attr('readonly', true);
 				} else {
 					$('#IdDupWarning').css("display", "none");
 					$('#IdDupWarning').css("display", "block");
-					$('label[for="IdLabelWarning"]').css('color', 'rgb(255 167 0)');
+					$('label[for="IdLabelWarning"]').css('color', 'rgb(255 0 0)');
 					$('label[for="IdLabelWarning"]').text('아이디 중복 다시입력');
 					$('#DupCheck').attr('value','UnCheck');
 					$('#inputUserId').val('');
@@ -52,7 +52,7 @@ function checkPw() {
 	if (pw.length < 4) {
 		$('#PwDupWarning').css("display", "none");
 		$('#PwDupWarning').css("display", "block");
-		$('label[for="PwLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="PwLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="PwLabelWarning"]').text('비밀번호는 4자이상으로 작성해주세요');
 		document.getElementById('registPW').value = '';
 	}
@@ -60,12 +60,12 @@ function checkPw() {
 		if (pw == document.getElementById('checkPW').value) {
 			$('#PwDupWarning').css("display", "none");
 			$('#PwDupWarning').css("display", "block");
-			$('label[for="PwLabelWarning"]').css('color', '#00ffad');
+			$('label[for="PwLabelWarning"]').css('color', '#369b00');
 			$('label[for="PwLabelWarning"]').text('비밀번호일치!');
 		} else {
 			$('#PwDupWarning').css("display", "none");
 			$('#PwDupWarning').css("display", "block");
-			$('label[for="PwLabelWarning"]').css('color', 'rgb(255 167 0)');
+			$('label[for="PwLabelWarning"]').css('color', 'rgb(255 0 0)');
 			$('label[for="PwLabelWarning"]').text('비밀번호 불일치 다시입력');
 			document.getElementById('checkPW').value = '';
 		}
@@ -78,7 +78,7 @@ function checkNewPw() {
 	if (newPw.length < 4) {
 		$('#NewPwDupWarning').css("display", "none");
 		$('#NewPwDupWarning').css("display", "block");
-		$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="NewPwLabelWarning"]').text('비밀번호는 4자이상으로 작성해주세요');
 		document.getElementById('newRegistPw').value = '';
 	}
@@ -86,12 +86,12 @@ function checkNewPw() {
 		if (newPw == document.getElementById('newCheckPw').value) {
 			$('#NewPwDupWarning').css("display", "none");
 			$('#NewPwDupWarning').css("display", "block");
-			$('label[for="NewPwLabelWarning"]').css('color', '#00ffad');
+			$('label[for="NewPwLabelWarning"]').css('color', '#369b00');
 			$('label[for="NewPwLabelWarning"]').text('비밀번호일치!');
 		} else {
 			$('#NewPwDupWarning').css("display", "none");
 			$('#NewPwDupWarning').css("display", "block");
-			$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 167 0)');
+			$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 0 0)');
 			$('label[for="NewPwLabelWarning"]').text('비밀번호 불일치 다시입력');
 			document.getElementById('newCheckPw').value = '';
 		}
@@ -134,7 +134,7 @@ function changePw() {
 	if (nowPw2 == newCheckPw2) {
 	$('#NewPwDupWarning').css("display", "none");
 		$('#NewPwDupWarning').css("display", "block");
-		$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="NewPwLabelWarning"]').text('현재 비밀번호와 새 비밀번호를 다르게 입력하세요');
 		document.getElementById('newRegistPw').value = '';
 		document.getElementById('newCheckPw').value = '';
@@ -161,7 +161,7 @@ function loginAjax() {
 			if (result == 0) {
 				loginSuccessOrFail = false;
 				$('#loginInputDiv').css("display", "block");
-				$('label[for="loginInputLabel"]').css('color', 'rgb(255 167 0)');
+				$('label[for="loginInputLabel"]').css('color', 'rgb(255 0 0)');
 				$('label[for="loginInputLabel"]').text('아이디 혹은 비밀번호가 틀렸습니다');
 				document.getElementById('inputLoginPw').value = '';
 			}
@@ -189,7 +189,7 @@ function formCheck(obj) {
 	if (obj.rn1.value.trim().length !== 6) {
 		$('#RnDupWarning').css("display", "none");
 		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="RnLabelWarning"]').text('주민등록번호 앞자리는 6자리');
 		obj.rn1.value = "";
 		obj.rn1.focus();
@@ -199,7 +199,7 @@ function formCheck(obj) {
 	if (isNaN(Number(obj.rn1.value))) {
 		$('#RnDupWarning').css("display", "none");
 		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="RnLabelWarning"]').text('주민등록번호 앞자리는 숫자만 입력');
 		obj.rn1.value = "";
 		obj.rn1.focus();
@@ -208,7 +208,7 @@ function formCheck(obj) {
 	if (obj.rn2.value.trim().length !== 7) {
 		$('#RnDupWarning').css("display", "none");
 		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="RnLabelWarning"]').text('주민등록번호 뒷자리는 7자리');
 		obj.rn2.value = "";
 		obj.rn2.focus();
@@ -217,7 +217,7 @@ function formCheck(obj) {
 	if (isNaN(Number(obj.rn2.value))) {
 		$('#RnDupWarning').css("display", "none");
 		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="RnLabelWarning"]').text('주민번호 뒷자리는 숫자만 입력');
 		obj.rn2.value = "";
 		obj.rn2.focus();
@@ -226,7 +226,7 @@ function formCheck(obj) {
 	if (obj.DupCheck.value!="Check"){
 		$('#RnDupWarning').css("display", "none");
 		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="RnLabelWarning"]').text('아이디중복체크');
 		return false;
 	}
@@ -240,7 +240,7 @@ function formCheck(obj) {
 	if (result != rnCheck.charAt(12)) {
 		$('#RnDupWarning').css("display", "none");
 		$('#RnDupWarning').css("display", "block");
-		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+		$('label[for="RnLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="RnLabelWarning"]').text('주민등록 번호가 올바르지 않습니다');
 		obj.rn2.value = "";
 		obj.rn2.focus();
@@ -254,7 +254,7 @@ function formCheckFindId(obj) {
 	if (obj.rn1.value.trim().length !== 6) {
 		$('#SRnDupWarningId').css("display", "none");
 		$('#SRnDupWarningId').css("display", "block");
-		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 0 0)');
 		$('label[for="SRnLabelWarningId"]').text('주민등록번호 앞자리는 6자리');
 		obj.rn1.value = "";
 		obj.rn1.focus();
@@ -264,7 +264,7 @@ function formCheckFindId(obj) {
 	if (isNaN(Number(obj.rn1.value))) {
 		$('#SRnDupWarningId').css("display", "none");
 		$('#SRnDupWarningId').css("display", "block");
-		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 0 0)');
 		$('label[for="SRnLabelWarningId"]').text('주민등록번호 앞자리는 숫자만 입력');
 		obj.rn1.value = "";
 		obj.rn1.focus();
@@ -273,7 +273,7 @@ function formCheckFindId(obj) {
 	if (obj.rn2.value.trim().length !== 7) {
 		$('#SRnDupWarningId').css("display", "none");
 		$('#SRnDupWarningId').css("display", "block");
-		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 0 0)');
 		$('label[for="SRnLabelWarningId"]').text('주민등록번호 뒷자리는 7자리');
 		obj.rn2.value = "";
 		obj.rn2.focus();
@@ -282,7 +282,7 @@ function formCheckFindId(obj) {
 	if (isNaN(Number(obj.rn2.value))) {
 		$('#SRnDupWarningId').css("display", "none");
 		$('#SRnDupWarningId').css("display", "block");
-		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningId"]').css('color', 'rgb(255 0 0)');
 		$('label[for="SRnLabelWarningId"]').text('주민번호 뒷자리는 숫자만 입력');
 		obj.rn2.value = "";
 		obj.rn2.focus();
@@ -296,7 +296,7 @@ function formCheckFindPw(obj) {
 	if (obj.rn1.value.trim().length !== 6) {
 		$('#SRnDupWarningPw').css("display", "none");
 		$('#SRnDupWarningPw').css("display", "block");
-		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 0 0)');
 		$('label[for="SRnLabelWarningPw"]').text('주민등록번호 앞자리는 6자리');
 		obj.rn1.value = "";
 		obj.rn1.focus();
@@ -306,7 +306,7 @@ function formCheckFindPw(obj) {
 	if (isNaN(Number(obj.rn1.value))) {
 		$('#SRnDupWarningPw').css("display", "none");
 		$('#SRnDupWarningPw').css("display", "block");
-		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 0 0)');
 		$('label[for="SRnLabelWarningPw"]').text('주민등록번호 앞자리는 숫자만 입력');
 		obj.rn1.value = "";
 		obj.rn1.focus();
@@ -315,7 +315,7 @@ function formCheckFindPw(obj) {
 	if (obj.rn2.value.trim().length !== 7) {
 		$('#SRnDupWarningPw').css("display", "none");
 		$('#SRnDupWarningPw').css("display", "block");
-		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 0 0)');
 		$('label[for="SRnLabelWarningPw"]').text('주민등록번호 뒷자리는 7자리');
 		obj.rn2.value = "";
 		obj.rn2.focus();
@@ -324,7 +324,7 @@ function formCheckFindPw(obj) {
 	if (isNaN(Number(obj.rn2.value))) {
 		$('#SRnDupWarningPw').css("display", "none");
 		$('#SRnDupWarningPw').css("display", "block");
-		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 167 0)');
+		$('label[for="SRnLabelWarningPw"]').css('color', 'rgb(255 0 0)');
 		$('label[for="SRnLabelWarningPw"]').text('주민번호 뒷자리는 숫자만 입력');
 		obj.rn2.value = "";
 		obj.rn2.focus();
@@ -350,7 +350,7 @@ function checkRn(){
 				trueOrFalse = false;
 				$('#RnDupWarning').css("display", "none");
 				$('#RnDupWarning').css("display", "block");
-				$('label[for="RnLabelWarning"]').css('color', 'rgb(255 167 0)');
+				$('label[for="RnLabelWarning"]').css('color', 'rgb(255 0 0)');
 				$('label[for="RnLabelWarning"]').text('해당주민등록번호로 회원가입된 아이디있음');
 			}
 		},
@@ -363,40 +363,60 @@ function checkRn(){
 }
 
 // 랜덤메뉴 생성
-// 소주
+// 소주 ajax통해 전체 안주 받기
+function sojuAjax() {
+	// 소주니까 soju~
+	var sojuFoodList = [];
+	$.ajax({
+		// url은 soju~
+		url : "sojuFood",
+		type : "post",
+		async : false,
+		dataType : 'json',
+		success : function(result) {
+			if (result !== null) {
+				// soju~ 에 result 삽입
+				sojuFoodList = result;
+			} else {
+				console.log('목록없음');
+			}
+		},
+		error : function() {
+			alert("서버요청실패");
+		}
+	});
+	// return soju~
+	return sojuFoodList;
+}
+
 function sojuRandomFood() {
-	$("#randomFoodList").fadeToggle();
+	var sulFoodList = [];
+	sulFoodList = sojuAjax();
 	
-	// 소주안주 목록 작성, 추가
-	var sulFoodList = [
-	"김치찌개",
-	"김치전",
-	"김치",
-	"치킨",
-	"파스타",
-	"닭발",
-	"곱창",
-	"화채"
-	];
-	
+	// 랜덤값 jquery
 	let randomThree = [];
-	for(var i = 0; i < 3; i++) {
+	let i = 0;
+	while (i < 3) {
 		let n = Math.floor(Math.random() * sulFoodList.length);
 		if (! sameNum(n)) {
-      		randomThree.push(n);
-    	} else {
-      		i--;
-    	}
-  	}
+			randomThree.push(n);
+			i++;
+		}
+	}
   	
 	function sameNum (n) {
-		return randomThree.find((e) => (e === n));
+		for (let i = 0; i < randomThree.length; i++) {
+			if (n === randomThree[i]) {
+				return true;
+			}
+		}
+    	return false;
 	}
 	
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:black; font-weight:bold;"/>';
+	const html = '<div style="color:#369b00; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");
@@ -406,39 +426,55 @@ function sojuRandomFood() {
 	
 }
 
-// 맥주
+// 맥주 ajax통해 전체 안주 받기
+function beerAjax() {
+	var beerFoodList = [];
+	$.ajax({
+		url : "beerFood",
+		type : "post",
+		async : false,
+		dataType : 'json',
+		success : function(result) {
+			if (result !== null) {
+				beerFoodList = result;
+			} else {
+				console.log('목록없음');
+			}
+		},
+		error : function() {
+			alert("서버요청실패");
+		}
+	});
+	return beerFoodList;
+}
+
 function beerRandomFood() {
-	$("#randomFoodList").fadeToggle();
-	
-	// 맥주안주 목록 작성, 추가
-	var sulFoodList = [
-	"견과류",
-	"김치전",
-	"튀김",
-	"치킨",
-	"과자",
-	"닭발",
-	"곱창",
-	];
+	let sulFoodList = [];
+	sulFoodList = beerAjax();
 	
 	let randomThree = [];
-	for(var i = 0; i < 3; i++) {
+	let i = 0;
+	while (i < 3) {
 		let n = Math.floor(Math.random() * sulFoodList.length);
 		if (! sameNum(n)) {
-      		randomThree.push(n);
-    	} else {
-      		i--;
-    	}
-  	}
+			randomThree.push(n);
+			i++;
+		}
+	}
   	
 	function sameNum (n) {
-		return randomThree.find((e) => (e === n));
+		for (let i = 0; i < randomThree.length; i++) {
+			if (n === randomThree[i]) {
+				return true;
+			}
+		}
+    	return false;
 	}
 	
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:black; font-weight:bold;"/>';
+	const html = '<div style="color:#369b00; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");
@@ -448,39 +484,55 @@ function beerRandomFood() {
 	
 }
 
-// 와인
+// 와인 ajax통해 전체 안주 받기
+function wineAjax() {
+	var wineFoodList = [];
+	$.ajax({
+		url : "wineFood",
+		type : "post",
+		async : false,
+		dataType : 'json',
+		success : function(result) {
+			if (result !== null) {
+				wineFoodList = result;
+			} else {
+				console.log('목록없음');
+			}
+		},
+		error : function() {
+			alert("서버요청실패");
+		}
+	});
+	return wineFoodList;
+}
+
 function wineRandomFood() {
-	$("#randomFoodList").fadeToggle();
-	
-	// 와인안주 목록 작성, 추가
-	var sulFoodList = [
-	"파스타",
-	"김치전",
-	"튀김",
-	"치킨",
-	"과자",
-	"닭발",
-	"곱창",
-	];
+	var sulFoodList = [];
+	sulFoodList = wineAjax();
 	
 	let randomThree = [];
-	for(var i = 0; i < 3; i++) {
+	let i = 0;
+	while (i < 3) {
 		let n = Math.floor(Math.random() * sulFoodList.length);
 		if (! sameNum(n)) {
-      		randomThree.push(n);
-    	} else {
-      		i--;
-    	}
-  	}
+			randomThree.push(n);
+			i++;
+		}
+	}
   	
 	function sameNum (n) {
-		return randomThree.find((e) => (e === n));
+		for (let i = 0; i < randomThree.length; i++) {
+			if (n === randomThree[i]) {
+				return true;
+			}
+		}
+    	return false;
 	}
 	
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:black; font-weight:bold;"/>';
+	const html = '<div style="color:#369b00; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");
@@ -490,39 +542,55 @@ function wineRandomFood() {
 	
 }
 
-// 보드카
+// 보드카 ajax통해 전체 안주 받기
+function vodkaAjax() {
+	var vodkaFoodList = [];
+	$.ajax({
+		url : "vodkaFood",
+		type : "post",
+		async : false,
+		dataType : 'json',
+		success : function(result) {
+			if (result !== null) {
+				vodkaFoodList = result;
+			} else {
+				console.log('목록없음');
+			}
+		},
+		error : function() {
+			alert("서버요청실패");
+		}
+	});
+	return vodkaFoodList;
+}
+
 function vodkaRandomFood() {
-	$("#randomFoodList").fadeToggle();
-	
-	// 보드카안주 목록 작성, 추가
-	var sulFoodList = [
-	"파스타",
-	"김치전",
-	"튀김",
-	"치킨",
-	"과자",
-	"닭발",
-	"곱창",
-	];
+	var sulFoodList = [];
+	sulFoodList = vodkaAjax();
 	
 	let randomThree = [];
-	for(var i = 0; i < 3; i++) {
+	let i = 0;
+	while (i < 3) {
 		let n = Math.floor(Math.random() * sulFoodList.length);
 		if (! sameNum(n)) {
-      		randomThree.push(n);
-    	} else {
-      		i--;
-    	}
-  	}
+			randomThree.push(n);
+			i++;
+		}
+	}
   	
 	function sameNum (n) {
-		return randomThree.find((e) => (e === n));
+		for (let i = 0; i < randomThree.length; i++) {
+			if (n === randomThree[i]) {
+				return true;
+			}
+		}
+    	return false;
 	}
 	
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:black; font-weight:bold;"/>';
+	const html = '<div style="color:#369b00; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");
@@ -532,39 +600,55 @@ function vodkaRandomFood() {
 	
 }
 
-// 위스키
+// 위스키 ajax통해 전체 안주 받기
+function whiskeyAjax() {
+	var whiskeyFoodList = [];
+	$.ajax({
+		url : "whiskeyFood",
+		type : "post",
+		async : false,
+		dataType : 'json',
+		success : function(result) {
+			if (result !== null) {
+				whiskeyFoodList = result;
+			} else {
+				console.log('목록없음');
+			}
+		},
+		error : function() {
+			alert("서버요청실패");
+		}
+	});
+	return whiskeyFoodList;
+}
+
 function whiskeyRandomFood() {
-	$("#randomFoodList").fadeToggle();
-	
-	// 위스키안주 목록 작성, 추가
-	var sulFoodList = [
-	"견과류",
-	"김치전",
-	"튀김",
-	"치킨",
-	"과자",
-	"닭발",
-	"곱창",
-	];
+	var sulFoodList = [];
+	sulFoodList = whiskeyAjax();
 	
 	let randomThree = [];
-	for(var i = 0; i < 3; i++) {
+	let i = 0;
+	while (i < 3) {
 		let n = Math.floor(Math.random() * sulFoodList.length);
 		if (! sameNum(n)) {
-      		randomThree.push(n);
-    	} else {
-      		i--;
-    	}
-  	}
+			randomThree.push(n);
+			i++;
+		}
+	}
   	
 	function sameNum (n) {
-		return randomThree.find((e) => (e === n));
+		for (let i = 0; i < randomThree.length; i++) {
+			if (n === randomThree[i]) {
+				return true;
+			}
+		}
+    	return false;
 	}
 	
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:black; font-weight:bold;"/>';
+	const html = '<div style="color:#369b00; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");
@@ -574,410 +658,67 @@ function whiskeyRandomFood() {
 	
 }
 
-// 메뉴 숨기기
-function hideMenu() {
-	document.querySelector('#randomFoodList').style.display = "none";
-}
-
-function warningHideAndShow() {
-	document.querySelector('.myFields').style.display = "none";
-}
 
 
 // 기존
 (function($) {
 
-	var $window = $(window),
-		$body = $('body'),
-		$wrapper = $('#wrapper'),
-		$header = $('#header'),
-		$footer = $('#footer'),
-		$main = $('#main'),
-		$main_articles = $main.children('article');
+	var	$window = $(window),
+		$body = $('body');
 
 	// Breakpoints.
-	breakpoints({
-		xlarge: ['1281px', '1680px'],
-		large: ['981px', '1280px'],
-		medium: ['737px', '980px'],
-		small: ['481px', '736px'],
-		xsmall: ['361px', '480px'],
-		xxsmall: [null, '360px']
-	});
+		breakpoints({
+			wide:      [ '1281px',  '1680px' ],
+			normal:    [ '981px',   '1280px' ],
+			narrow:    [ '841px',   '980px'  ],
+			narrower:  [ '737px',   '840px'  ],
+			mobile:    [ '481px',   '736px'  ],
+			mobilep:   [ null,      '480px'  ]
+		});
 
 	// Play initial animations on page load.
-	$window.on('load', function() {
-		window.setTimeout(function() {
-			$body.removeClass('is-preload');
-		}, 100);
-	});
+		$window.on('load', function() {
+			window.setTimeout(function() {
+				$body.removeClass('is-preload');
+			}, 100);
+		});
 
-	// Fix: Flexbox min-height bug on IE.
-	if (browser.name == 'ie') {
-
-		var flexboxFixTimeoutId;
-
-		$window.on('resize.flexbox-fix', function() {
-
-			clearTimeout(flexboxFixTimeoutId);
-
-			flexboxFixTimeoutId = setTimeout(function() {
-
-				if ($wrapper.prop('scrollHeight') > $window.height())
-					$wrapper.css('height', 'auto');
-				else
-					$wrapper.css('height', '100vh');
-
-			}, 250);
-
-		}).triggerHandler('resize.flexbox-fix');
-
-	}
+	// Dropdowns.
+		$('#nav > ul').dropotron({
+			offsetY: -15,
+			hoverDelay: 0,
+			alignment: 'center'
+		});
 
 	// Nav.
-	var $nav = $header.children('nav'),
-		$nav_li = $nav.find('li');
 
-	// Add "middle" alignment classes if we're dealing with an even number of items.
-	if ($nav_li.length % 2 == 0) {
-
-		$nav.addClass('use-middle');
-		$nav_li.eq(($nav_li.length / 2)).addClass('is-middle');
-
-	}
-
-	// Main.
-	var delay = 325,
-		locked = false;
-
-	// Methods.
-	$main._show = function(id, initial) {
-
-		var $article = $main_articles.filter('#' + id);
-
-		// No such article? Bail.
-		if ($article.length == 0)
-			return;
-
-		// Handle lock.
-
-		// Already locked? Speed through "show" steps w/o delays.
-		if (locked || (typeof initial != 'undefined' && initial === true)) {
-
-			// Mark as switching.
-			$body.addClass('is-switching');
-
-			// Mark as visible.
-			$body.addClass('is-article-visible');
-
-			// Deactivate all articles (just in case one's already active).
-			$main_articles.removeClass('active');
-
-			// Hide header, footer.
-			$header.hide();
-			$footer.hide();
-
-			// Show main, article.
-			$main.show();
-			$article.show();
-
-			// Activate article.
-			$article.addClass('active');
-
-			// Unlock.
-			locked = false;
-
-			// Unmark as switching.
-			setTimeout(function() {
-				$body.removeClass('is-switching');
-			}, (initial ? 1000 : 0));
-
-			return;
-
-		}
-
-		// Lock.
-		locked = true;
-
-		// Article already visible? Just swap articles.
-		if ($body.hasClass('is-article-visible')) {
-
-			// Deactivate current article.
-			var $currentArticle = $main_articles.filter('.active');
-
-			$currentArticle.removeClass('active');
-
-			// Show article.
-			setTimeout(function() {
-
-				// Hide current article.
-				$currentArticle.hide();
-
-				// Show article.
-				$article.show();
-
-				// Activate article.
-				setTimeout(function() {
-
-					$article.addClass('active');
-
-					// Window stuff.
-					$window
-						.scrollTop(0)
-						.triggerHandler('resize.flexbox-fix');
-
-					// Unlock.
-					setTimeout(function() {
-						locked = false;
-					}, delay);
-
-				}, 25);
-
-			}, delay);
-
-		}
-
-		// Otherwise, handle as normal.
-		else {
-
-			// Mark as visible.
-			$body
-				.addClass('is-article-visible');
-
-			// Show article.
-			setTimeout(function() {
-
-				// Hide header, footer.
-				$header.hide();
-				$footer.hide();
-
-				// Show main, article.
-				$main.show();
-				$article.show();
-
-				// Activate article.
-				setTimeout(function() {
-
-					$article.addClass('active');
-
-					// Window stuff.
-					$window
-						.scrollTop(0)
-						.triggerHandler('resize.flexbox-fix');
-
-					// Unlock.
-					setTimeout(function() {
-						locked = false;
-					}, delay);
-
-				}, 25);
-
-			}, delay);
-
-		}
-
-	};
-
-	$main._hide = function(addState) {
-
-		var $article = $main_articles.filter('.active');
-
-		// Article not visible? Bail.
-		if (!$body.hasClass('is-article-visible'))
-			return;
-
-		// Add state?
-		if (typeof addState != 'undefined'
-			&& addState === true)
-			history.pushState(null, null, '#');
-
-		// Handle lock.
-
-		// Already locked? Speed through "hide" steps w/o delays.
-		if (locked) {
-
-			// Mark as switching.
-			$body.addClass('is-switching');
-
-			// Deactivate article.
-			$article.removeClass('active');
-
-			// Hide article, main.
-			$article.hide();
-			$main.hide();
-
-			// Show footer, header.
-			$footer.show();
-			$header.show();
-
-			// Unmark as visible.
-			$body.removeClass('is-article-visible');
-
-			// Unlock.
-			locked = false;
-
-			// Unmark as switching.
-			$body.removeClass('is-switching');
-
-			// Window stuff.
-			$window
-				.scrollTop(0)
-				.triggerHandler('resize.flexbox-fix');
-
-			return;
-
-		}
-
-		// Lock.
-		locked = true;
-
-		// Deactivate article.
-		$article.removeClass('active');
-
-		// Hide article.
-		setTimeout(function() {
-
-			// Hide article, main.
-			$article.hide();
-			$main.hide();
-
-			// Show footer, header.
-			$footer.show();
-			$header.show();
-
-			// Unmark as visible.
-			setTimeout(function() {
-
-				$body.removeClass('is-article-visible');
-
-				// Window stuff.
-				$window
-					.scrollTop(0)
-					.triggerHandler('resize.flexbox-fix');
-
-				// Unlock.
-				setTimeout(function() {
-					locked = false;
-				}, delay);
-
-			}, 25);
-
-		}, delay);
-
-
-	};
-
-	// Articles.
-	$main_articles.each(function() {
-
-		var $this = $(this);
-
-		// Close.
-		$('<div class="close">Close</div>')
-			.appendTo($this)
-			.on('click', function() {
-				location.hash = '';
-				hideMenu();
-			});
-
-		// Prevent clicks from inside article from bubbling.
-		$this.on('click', function(event) {
-			event.stopPropagation();
-		});
-
-	});
-
-	// Events.
-	$body.on('click', function(event) {
-
-		// Article visible? Hide.
-		if ($body.hasClass('is-article-visible'))
-			$main._hide(true);
-
-	});
-
-	$window.on('keyup', function(event) {
-
-		switch (event.keyCode) {
-
-			case 27:
-
-				// Article visible? Hide.
-				if ($body.hasClass('is-article-visible'))
-					$main._hide(true);
-
-				break;
-
-			default:
-				break;
-
-		}
-
-	});
-
-	$window.on('hashchange', function(event) {
-
-		// Empty hash?
-		if (location.hash == ''
-			|| location.hash == '#') {
-
-			// Prevent default.
-			event.preventDefault();
-			event.stopPropagation();
-
-			// Hide.
-			$main._hide();
-
-		}
-
-		// Otherwise, check for a matching article.
-		else if ($main_articles.filter(location.hash).length > 0) {
-
-			// Prevent default.
-			event.preventDefault();
-			event.stopPropagation();
-
-			// Show article.
-			$main._show(location.hash.substr(1));
-
-		}
-
-	});
-
-	// Scroll restoration.
-	// This prevents the page from scrolling back to the top on a hashchange.
-	if ('scrollRestoration' in history)
-		history.scrollRestoration = 'manual';
-	else {
-
-		var oldScrollPos = 0,
-			scrollPos = 0,
-			$htmlbody = $('html,body');
-
-		$window
-			.on('scroll', function() {
-
-				oldScrollPos = scrollPos;
-				scrollPos = $htmlbody.scrollTop();
-
-			})
-			.on('hashchange', function() {
-				$window.scrollTop(oldScrollPos);
-			});
-
-	}
-
-	// Initialize.
-
-	// Hide main, articles.
-	$main.hide();
-	$main_articles.hide();
-
-	// Initial article.
-	if (location.hash != ''
-		&& location.hash != '#')
-		$window.on('load', function() {
-			$main._show(location.hash.substr(1), true);
-		});
+		// Bar.
+			$(
+				'<div id="titleBar">' +
+					'<a href="#navPanel" class="toggle"></a>' +
+					'<span class="title">' + $('#logo').html() + '</span>' +
+				'</div>'
+			)
+				.appendTo($body);
+
+		// Panel.
+			$(
+				'<div id="navPanel">' +
+					'<nav>' +
+						$('#nav').navList() +
+					'</nav>' +
+				'</div>'
+			)
+				.appendTo($body)
+				.panel({
+					delay: 500,
+					hideOnClick: true,
+					hideOnSwipe: true,
+					resetScroll: true,
+					resetForms: true,
+					side: 'left',
+					target: $body,
+					visibleClass: 'navPanel-visible'
+				});
 
 })(jQuery);

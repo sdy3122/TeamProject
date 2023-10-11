@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>한잔해</title>
+<title>내정보</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -27,10 +27,17 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="/">메인화면</a></li>
-					<li><a href="/choiceSulPage">안주 추천</a></li>
+					<li><a href="/">메인화면</a></li>
+					<li><a href="#">술</a>
+						<ul>
+							<li><a href="#">소주</a></li>
+							<li><a href="#">맥주</a></li>
+							<li><a href="#">와인</a></li>
+							<li><a href="#">보드카</a></li>
+							<li><a href="#">위스키</a></li>
+						</ul></li>
 					<li><a href="#">랜덤채팅</a></li>
-					<li><a href="#">게시판</a>
+					<li><a href="indexBoard">게시판</a>
 						<ul>
 							<li><a href="#">소주게시판</a></li>
 							<li><a href="#">맥주게시판</a></li>
@@ -38,54 +45,57 @@
 							<li><a href="#">보드카게시판</a></li>
 							<li><a href="#">위스키게시판</a></li>
 						</ul></li>
-
-					<c:choose>
-						<c:when test="${empty check}">
-							<li><a href="/loginPage">로그인</a>
-								<ul>
-									<li><a href="/findIdPage">아이디찾기</a></li>
-									<li><a href="/findPwPage">비밀번호찾기</a></li>
-									<li><a href="/registPage">회원가입</a></li>
-								</ul></li>
-						</c:when>
-						<c:otherwise>
-						<li><a href="/myInfoPage">${sessionScope.sessionVo.userName}님</a>
-								<ul>
-									<li><a class="loginATag" href="/logout">로그아웃</a></li>
-									<li><a class="loginATag" href="/myInfoEdit">비밀번호변경</a></li>
-									<li><a class="loginATag" href="/deleteInfoPage">회원탈퇴</a></li>
-								</ul></li>
-						</c:otherwise>
-					</c:choose>
+					<li class="current"><a href="myInfoPage">${sessionScope.sessionVo.userName}님</a></li>
 				</ul>
 			</nav>
 
 		</div>
 
-		<!-- Banner -->
-		<section id="banner">
-			<header>
-				<h2>
-					이거: <em>개어렵네 <a
-						href="http://html5up.net">HTML5 UP</a></em>
-				</h2>
-				<a href="#" class="button">Learn More</a>
-			</header>
+		<!-- Main -->
+		<section class="wrapper style1">
+			<div class="container">
+				<div id="content">
+					<!-- Content -->
+					<article id="myInfo">
+						<h2 class="major">내정보</h2>
+						<form action="">
+							<table>
+								<tr>
+									<!-- 세션값을 빼올때는 sessionScope.세션이름.세션에있는값 으로 작성하면된다 -->
+									<td>이름</td>
+									<td><input type="text" name="userName"
+										value="${sessionScope.sessionVo.userName}" readonly="readonly"></td>
+								</tr>
+								<tr>
+									<td>아이디</td>
+									<td><input type="text" name="userId"
+										value="${sessionScope.sessionVo.userId}" readonly="readonly"></td>
+								</tr>
+								<tr>
+									<td>작성 게시글 수</td>
+									<td><input type="text" name="writeCount"
+										value="${sessionScope.cnt}" readonly="readonly"></td>
+								</tr>
+							</table>
+						</form>
+					</article>
+
+				</div>
+			</div>
 		</section>
 
-		
 		<!-- Footer -->
 		<div id="footer">
-			
+			<a class="loginATag" href="/logout">로그아웃</a>
+			<a class="loginATag" href="/myInfoEdit">비밀번호변경</a>
+				<a class="loginATag" href="/deleteInfoPage">회원탈퇴</a>
 			<!-- Copyright -->
 			<div class="copyright">
 				<p class="copyright">&copy; Design: 서덕영</p>
 			</div>
-
 		</div>
 
 	</div>
-
 	<!-- Scripts -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -15,11 +15,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.mappers.BeerMapper;
 import kr.co.mappers.SojuMapper;
 import kr.co.mappers.UserMapper;
+import kr.co.mappers.VodkaMapper;
+import kr.co.mappers.WhiskeyMapper;
+import kr.co.mappers.WineMapper;
 import kr.co.service.UserService;
+import kr.co.vo.BeerVo;
 import kr.co.vo.SojuVo;
 import kr.co.vo.UserVo;
+import kr.co.vo.VodkaVo;
+import kr.co.vo.WhiskeyVo;
+import kr.co.vo.WineVo;
 
 @Controller
 public class UserController {
@@ -30,10 +38,63 @@ public class UserController {
 	private SojuMapper sojuMapper;
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private BeerMapper beerMapper;
+	@Autowired
+	private VodkaMapper vodkaMapper;
+	@Autowired
+	private WhiskeyMapper whiskeyMapper;
+	@Autowired
+	private WineMapper wineMapper;
 	
-	@GetMapping(value = { "/" })
+	@GetMapping(value = { "/", "index" })
 	public String home(Model model) {
 		return "index";
+	}
+	
+	@GetMapping("indexBoard")
+	public String indexBoard() {
+		return "indexBoard";
+	}
+	
+	@GetMapping("findIdPage")
+	public String findIdPage() {
+		return "findIdPage";
+	}
+	
+	@GetMapping("findPwPage")
+	public String findPwPage() {
+		return "findPwPage";
+	}
+	
+	@GetMapping("loginPage")
+	public String loginPage() {
+		return "loginPage";
+	}
+	
+	@GetMapping("registPage")
+	public String registPage() {
+		return "registPage";
+	}
+	
+	@GetMapping("myInfoPage")
+	public String myInfoPage() {
+		return "myInfoPage";
+	}
+	
+	@GetMapping("myInfoEdit")
+	public String myInfoEdit() {
+		return "myInfoEdit";
+	}
+	
+	@GetMapping("deleteInfoPage")
+	public String deleteInfoPage() {
+		return "deleteInfoPage";
+	}
+	
+	@GetMapping("choiceSulPage")
+	public String choiceSulPage() {
+		return "choiceSulPage";
 	}
 
 	@PostMapping("/regist")
@@ -98,7 +159,7 @@ public class UserController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/deleteUser")
+	@RequestMapping(value = "/deleteInfo")
 	public String deleteAfter(HttpServletRequest req) {
 		HttpSession session = req.getSession(false);
 		UserVo vo = (UserVo) session.getAttribute("sessionVo");
@@ -150,12 +211,12 @@ public class UserController {
 			model.addAttribute("inputName", userName);
 			model.addAttribute("inputRn1", rnString1);
 			model.addAttribute("findId", findID);
-			return "findUserId";
+			return "findSuccessId";
 		} else {
 			System.out.println("그런 계정없음");
 			model.addAttribute("inputName", userName);
 			model.addAttribute("inputRn1", rnString1);
-			return "findAnyId";
+			return "findFailId";
 		}
 	}
 
@@ -177,13 +238,13 @@ public class UserController {
 			model.addAttribute("inputRn1", rnString1);
 			model.addAttribute("inputId", userId);
 			model.addAttribute("findPw", findPW);
-			return "findUserPw";
+			return "findSuccessPw";
 		} else {
 			System.out.println("그런 계정없음");
 			model.addAttribute("inputName", userName);
 			model.addAttribute("inputRn1", rnString1);
 			model.addAttribute("inputId", userId);
-			return "findAnyPw";
+			return "findFailPw";
 		}
 	}
 	
@@ -201,6 +262,61 @@ public class UserController {
 		String rn = req.getParameter("checkRegistNumber");
 		int countDupRn = userMapper.findSameRn(rn).size();
 		return countDupRn;
+	}
+	
+	@ResponseBody
+	@PostMapping("/sojuFood")
+	public List<SojuVo> sojuFood(HttpServletRequest req) {
+		System.out.println("소주 안주 찾으러 옴");
+		List<SojuVo> menuList = sojuMapper.selectDistinctSojuList();
+		for (int i = 0; i < menuList.size(); i++) {
+			System.out.println(menuList.get(i));
+		}
+		return menuList;
+	}
+	
+	@ResponseBody
+	@PostMapping("/beerFood")
+	public List<BeerVo> beerFood(HttpServletRequest req) {
+		System.out.println("맥주 안주 찾으러 옴");
+		List<BeerVo> menuList = beerMapper.selectDistinctBeerList();
+		for (int i = 0; i < menuList.size(); i++) {
+			System.out.println(menuList.get(i));
+		}
+		return menuList;
+	}
+	
+	@ResponseBody
+	@PostMapping("/wineFood")
+	public List<WineVo> wineFood(HttpServletRequest req) {
+		System.out.println("와인 안주 찾으러 옴");
+		List<WineVo> menuList = wineMapper.selectDistinctWineList();
+		for (int i = 0; i < menuList.size(); i++) {
+			System.out.println(menuList.get(i));
+		}
+		return menuList;
+	}
+	
+	@ResponseBody
+	@PostMapping("/vodkaFood")
+	public List<VodkaVo> vodkaFood(HttpServletRequest req) {
+		System.out.println("보드카 안주 찾으러 옴");
+		List<VodkaVo> menuList = vodkaMapper.selectDistinctVodkaList();
+		for (int i = 0; i < menuList.size(); i++) {
+			System.out.println(menuList.get(i));
+		}
+		return menuList;
+	}
+	
+	@ResponseBody
+	@PostMapping("/whiskeyFood")
+	public List<WhiskeyVo> whiskeyFood(HttpServletRequest req) {
+		System.out.println("위스키 안주 찾으러 옴");
+		List<WhiskeyVo> menuList = whiskeyMapper.selectDistinctWhiskeyList();
+		for (int i = 0; i < menuList.size(); i++) {
+			System.out.println(menuList.get(i));
+		}
+		return menuList;
 	}
 	
 	@GetMapping("/board")

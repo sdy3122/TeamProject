@@ -5,11 +5,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>회원정보조회실패</title>
+<title>아이디조회성공</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="${path}/resources/css/loginFail.css" />
+<link rel="stylesheet" href="${path}/resources/login/css/index.css" />
 <style>
 </style>
 </head>
@@ -20,10 +20,12 @@
 
 		<!-- Header -->
 		<header id="header">
-			<article id="login">
-				<h2 class="major">아이디조회결과</h2>
-				<form method="post" accept-charset="UTF-8">
-					<table>
+			<div id="registDivBorder">
+				<article id="login">
+					<h2 class="major">아이디조회결과</h2>
+					<form method="post" accept-charset="UTF-8">
+					<p id="tableSuccessHead">아이디 조회 성공!</p>
+						<table>
 						<tr>
 							<td>이름</td>
 							<td><input type="text" name="userName" value="${inputName}"
@@ -35,35 +37,29 @@
 								readonly="readonly"></td>
 						</tr>
 						<tr>
-							<p>해당 정보로 조회되는 아이디가 없습니다</p>
+							<td>조회된 아이디</td>
+							<td><input type="text" name="userId" value="${findId}"
+								readonly="readonly"></td>
 						</tr>
 					</table>
-					<p>
-						<br> <a href="/controller/">메인화면</a>
-					</p>
-				</form>
-			</article>
+					</form>
+				</article>
+			</div>
 		</header>
-
+		<!-- 여가 끝남 -->
 		<!-- Footer -->
 		<footer id="footer">
-			<p class="copyright">&copy; Design: 서덕영</p>
+			<a href="/">메인화면</a>
 		</footer>
 
 	</div>
-
-	<!-- BG -->
-	<div id="bg"></div>
-
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- Scripts -->
-	<script src="${path}/resources/js/jquery.min.js"></script>
-	<script src="${path}/resources/js/browser.min.js"></script>
-	<script src="${path}/resources/js/breakpoints.min.js"></script>
-	<script src="${path}/resources/js/util.js"></script>
-	<script src="${path}/resources/js/main.js"></script>
-	<!-- 추가 스크립트 -->
-	<script>
-		
-	</script>
+	<script src="${path}/resources/login/js/browser.min.js"></script>
+	<script src="${path}/resources/login/js/breakpoints.min.js"></script>
+	<script src="${path}/resources/login/js/util.js"></script>
+	<script src="${path}/resources/login/js/main.js"></script>
+
 </body>
 </html>

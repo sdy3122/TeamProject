@@ -4,31 +4,61 @@
 	url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600")
 	;
 
-#randomFoodList {
-	display : none;
-	margin : 1em 0em 0em 0em;
+#IdDupCheck {
+	border: solid 1.2px #369b00;
+	background-color: white !important;
+	color: black;
 }
 
+#indexName {
+	margin: 0;
+}
+
+#tableFailHead {
+	font-size: 1rem;
+	margin-bottom: 1rem;
+	color: red;
+	font-weight: 1000;
+}
+
+#tableSuccessHead {
+	font-size: 1rem;
+	margin-bottom: 1rem;
+	color: #369b00;
+	font-weight: 1000;
+}
+
+#registDivBorder {
+	border: solid 1.2px #369b00;
+	border-radius: 7px;
+	padding: 3em;
+}
+
+#reInputBtn {
+	border: solid 1.5px #369b00;
+	border-radius: 4px;
+}
+
+#randomFoodList {
+	display: none;
+	margin: 1em 0em 0em 0em;
+}
 
 #goFoodEva {
-	margin : 0em 0em 0.5em 0em;
+	margin: 0em 0em 0.5em 0em;
 }
 
 #showBoardList {
-	margin : 1em 0em 1em 0em;
-	display : block;
+	margin: 1em 0em 1em 0em;
+	display: block;
 }
 
 #moveCenter {
 	text-align: center;
 }
 
-div input {
-	width : 100px;
-}
-
 .showFood {
-	width : 100px;
+	width: 100px;
 	background-color: white !important;
 }
 
@@ -44,11 +74,11 @@ div input {
 }
 
 .myFields {
-	display : none;	
+	display: none;
 }
 
 .primary {
-	margin : 0 5px 0 5px;
+	margin: 0 5px 0 5px;
 }
 
 th {
@@ -106,11 +136,6 @@ mark {
 	color: inherit;
 }
 
-input::-moz-focus-inner {
-	border: 0;
-	padding: 0;
-}
-
 input, select, textarea {
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -136,10 +161,6 @@ html {
 
 *, *:before, *:after {
 	box-sizing: inherit;
-}
-
-body {
-	background: #1b1f22;
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -177,7 +198,7 @@ html {
 }
 
 body, input, select, textarea {
-	color: #ffffff;
+	color: black;
 	font-family: "Source Sans Pro", sans-serif;
 	font-weight: 300;
 	font-size: 1rem;
@@ -212,7 +233,7 @@ em, i {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: #ffffff;
+	color: black;
 	font-weight: 600;
 	line-height: 1.5;
 	margin: 0 0 1rem 0;
@@ -226,13 +247,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 h1.major, h2.major, h3.major, h4.major, h5.major, h6.major {
-	border-bottom: solid 1px #ffffff;
 	width: -moz-max-content;
 	width: -webkit-max-content;
 	width: -ms-max-content;
 	width: max-content;
 	padding-bottom: 0.5rem;
-	margin: 0 0 2rem 0;
 }
 
 h1 {
@@ -342,10 +361,6 @@ hr {
 }
 
 /* Form */
-form {
-	margin: 0 0 2rem 0;
-}
-
 form>:last-child {
 	margin-bottom: 0;
 }
@@ -409,7 +424,7 @@ form>.fields>.field.quarter {
 }
 
 label {
-	color: #ffffff;
+	color: black;
 	display: block;
 	font-size: 1rem;
 	font-weight: 500;
@@ -429,6 +444,7 @@ label {
 	margin: 0 0 0.2rem 0;
 	text-transform: uppercase;
 }
+
 form>.myFields>.myField {
 	-moz-flex-grow: 0;
 	-webkit-flex-grow: 0;
@@ -441,6 +457,7 @@ form>.myFields>.myField {
 	padding: 0;
 	width: calc(100% - 1.5rem);
 }
+
 form>.myFields>.myField.half {
 	width: calc(50% - 0.75rem);
 }
@@ -491,18 +508,18 @@ form>.btnFields {
 }
 
 /* header 아래 미니메뉴 */
-header>.miniMenu> a{
+header>.miniMenu>a {
 	font-size: 0.7rem;
 	border: none;
 	align-content: center;
 }
 
 header>.miniMenu>#firstA {
-	margin : 0 5px 0 0;
+	margin: 0 5px 0 0;
 }
 
-header>.miniMenu> #lastA {
-	margin : 0 20px 0 5px;
+header>.miniMenu>#lastA {
+	margin: 0 20px 0 5px;
 }
 
 input[type="text"], input[type="password"], input[type="email"], input[type="tel"],
@@ -521,7 +538,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
 		background-color 0.2s ease-in-out;
 	background-color: transparent;
 	border-radius: 4px;
-	border: solid 1px #ffffff;
+	border: solid 1px #369b00;
 	color: inherit;
 	display: block;
 	outline: 0;
@@ -533,13 +550,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
 input[type="text"]:invalid, input[type="password"]:invalid, input[type="email"]:invalid,
 	input[type="tel"]:invalid, select:invalid, textarea:invalid {
 	box-shadow: none;
-}
-
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus,
-	input[type="tel"]:focus, select:focus, textarea:focus {
-	background: rgba(255, 255, 255, 0.075);
-	border-color: #ffffff;
-	box-shadow: 0 0 0 1px #ffffff;
 }
 
 select {
@@ -648,13 +658,6 @@ input[type="checkbox"]:checked+label:before, input[type="radio"]:checked+label:b
 	content: '\f00c';
 }
 
-input[type="checkbox"]:focus+label:before, input[type="radio"]:focus+label:before
-	{
-	background: rgba(255, 255, 255, 0.075);
-	border-color: #ffffff;
-	box-shadow: 0 0 0 1px #ffffff;
-}
-
 input[type="checkbox"]+label:before {
 	border-radius: 4px;
 }
@@ -664,27 +667,27 @@ input[type="radio"]+label:before {
 }
 
 ::-webkit-input-placeholder {
-	color: rgba(255, 255, 255, 0.5) !important;
+	color: grey !important;
 	opacity: 1.0;
 }
 
 :-moz-placeholder {
-	color: rgba(255, 255, 255, 0.5) !important;
+	color: grey !important;
 	opacity: 1.0;
 }
 
 ::-moz-placeholder {
-	color: rgba(255, 255, 255, 0.5) !important;
+	color: grey !important;
 	opacity: 1.0;
 }
 
 :-ms-input-placeholder {
-	color: rgba(255, 255, 255, 0.5) !important;
+	color: grey !important;
 	opacity: 1.0;
 }
 
 .formerize-placeholder {
-	color: rgba(255, 255, 255, 0.5) !important;
+	color: grey !important;
 	opacity: 1.0;
 }
 
@@ -1101,8 +1104,7 @@ input[type="submit"], input[type="reset"], input[type="button"], button,
 	background-color: transparent;
 	border-radius: 4px;
 	border: 0;
-	box-shadow: inset 0 0 0 1px #ffffff;
-	color: #ffffff !important;
+	color: black;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 0.8rem;
@@ -1147,8 +1149,8 @@ input[type="submit"].small, input[type="reset"].small, input[type="button"].smal
 
 input[type="submit"].primary, input[type="reset"].primary, input[type="button"].primary,
 	button.primary, .button.primary {
-	background-color: #ffffff;
-	color: #1b1f22 !important;
+	background-color: #369b00;
+	color: white;
 	font-weight: 600;
 }
 
@@ -1199,7 +1201,8 @@ input[type="submit"], input[type="reset"], input[type="button"], button
 	-webkit-transition-delay: 0.75s;
 	-ms-transition-delay: 0.75s;
 	transition-delay: 0.75s;
-	background-image: linear-gradient(to top, rgb(126 255 250 / 14%), rgb(48 255 24 / 49%)), url(../../images/overlay.png);
+	background-image: linear-gradient(to top, rgb(126 255 250/ 14%),
+		rgb(48 255 24/ 49%)), url(../../images/overlay.png);
 	background-size: auto, 256px 256px;
 	background-position: center, center;
 	background-repeat: no-repeat, repeat;
@@ -1238,7 +1241,7 @@ body.is-article-visible #bg:after {
 
 /* 대기화면 색상 변경 */
 body.is-preload #bg:before {
-	background-color: rgb(45 249 213 / 31%);
+	background-color: rgb(45 249 213/ 31%);
 }
 
 /* Wrapper */
@@ -1273,13 +1276,13 @@ body.is-preload #bg:before {
 
 @media screen and (max-width: 1680px) {
 	#wrapper {
-		padding: 3rem 2rem;
+		padding: 0 2rem;
 	}
 }
 
 @media screen and (max-width: 736px) {
 	#wrapper {
-		padding: 2rem 1rem;
+		padding: 0 1rem;
 	}
 }
 
@@ -1311,16 +1314,7 @@ body.is-preload #bg:before {
 		ease-in-out, opacity 0.325s ease-in-out;
 	transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out,
 		opacity 0.325s ease-in-out;
-	background-image: -moz-radial-gradient(rgba(0, 0, 0, 0.25) 25%,
-		rgba(0, 0, 0, 0) 55%);
-	background-image: -webkit-radial-gradient(rgba(0, 0, 0, 0.25) 25%,
-		rgba(0, 0, 0, 0) 55%);
-	background-image: -ms-radial-gradient(rgba(0, 0, 0, 0.25) 25%,
-		rgba(0, 0, 0, 0) 55%);
-	background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%,
-		rgba(0, 0, 0, 0) 55%);
 	max-width: 100%;
-	text-align: center;
 }
 
 #header>* {
@@ -1597,7 +1591,7 @@ body.is-preload #header .content .inner {
 	width: 40rem;
 	max-width: 100%;
 	/* div배경색 넣고싶으면 여기 background-color 추가, 변경사항 */
-	border : solid;
+	border: solid;
 	border-color: #8ff98f;
 	border-radius: 4px;
 	opacity: 0;
@@ -1683,7 +1677,7 @@ body.is-preload #header .content .inner {
 		opacity 0.325s ease-in-out;
 	width: 100%;
 	max-width: 100%;
-	margin-top: 2rem;
+	margin-bottom: 2rem;
 	text-align: center;
 }
 

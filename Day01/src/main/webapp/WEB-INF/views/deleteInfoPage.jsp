@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>한잔해</title>
+<title>내정보</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -27,8 +27,15 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="/">메인화면</a></li>
-					<li><a href="/choiceSulPage">안주 추천</a></li>
+					<li><a href="/">메인화면</a></li>
+					<li><a href="#">술</a>
+						<ul>
+							<li><a href="#">소주</a></li>
+							<li><a href="#">맥주</a></li>
+							<li><a href="#">와인</a></li>
+							<li><a href="#">보드카</a></li>
+							<li><a href="#">위스키</a></li>
+						</ul></li>
 					<li><a href="#">랜덤채팅</a></li>
 					<li><a href="#">게시판</a>
 						<ul>
@@ -38,54 +45,44 @@
 							<li><a href="#">보드카게시판</a></li>
 							<li><a href="#">위스키게시판</a></li>
 						</ul></li>
-
-					<c:choose>
-						<c:when test="${empty check}">
-							<li><a href="/loginPage">로그인</a>
-								<ul>
-									<li><a href="/findIdPage">아이디찾기</a></li>
-									<li><a href="/findPwPage">비밀번호찾기</a></li>
-									<li><a href="/registPage">회원가입</a></li>
-								</ul></li>
-						</c:when>
-						<c:otherwise>
-						<li><a href="/myInfoPage">${sessionScope.sessionVo.userName}님</a>
-								<ul>
-									<li><a class="loginATag" href="/logout">로그아웃</a></li>
-									<li><a class="loginATag" href="/myInfoEdit">비밀번호변경</a></li>
-									<li><a class="loginATag" href="/deleteInfoPage">회원탈퇴</a></li>
-								</ul></li>
-						</c:otherwise>
-					</c:choose>
+					<li class="current"><a href="/myInfoPage">${sessionScope.sessionVo.userName}님</a></li>
 				</ul>
 			</nav>
 
 		</div>
 
-		<!-- Banner -->
-		<section id="banner">
-			<header>
-				<h2>
-					이거: <em>개어렵네 <a
-						href="http://html5up.net">HTML5 UP</a></em>
-				</h2>
-				<a href="#" class="button">Learn More</a>
-			</header>
+		<!-- Main -->
+		<section class="wrapper style1">
+			<div class="container">
+				<div id="content">
+					<!-- Content -->
+					<article id="delete">
+						<h2 class="major">회원탈퇴</h2>
+						<form>
+							<div class="btnFields">
+								<div class="field half">
+									<button type="button" class="primary"
+										onclick="location.href='/deleteInfo'">회원탈퇴</button>
+									<button type="button" class="primary"
+										onclick="location.href='/myInfoPage'">취소</button>
+								</div>
+							</div>
+						</form>
+					</article>
+
+				</div>
+			</div>
 		</section>
 
-		
 		<!-- Footer -->
 		<div id="footer">
-			
 			<!-- Copyright -->
 			<div class="copyright">
 				<p class="copyright">&copy; Design: 서덕영</p>
 			</div>
-
 		</div>
 
 	</div>
-
 	<!-- Scripts -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

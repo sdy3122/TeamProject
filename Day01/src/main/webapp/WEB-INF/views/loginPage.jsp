@@ -27,7 +27,7 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="/">메인화면</a></li>
+					<li><a href="/">메인화면</a></li>
 					<li><a href="/choiceSulPage">안주 추천</a></li>
 					<li><a href="#">랜덤채팅</a></li>
 					<li><a href="#">게시판</a>
@@ -38,54 +38,62 @@
 							<li><a href="#">보드카게시판</a></li>
 							<li><a href="#">위스키게시판</a></li>
 						</ul></li>
-
-					<c:choose>
-						<c:when test="${empty check}">
-							<li><a href="/loginPage">로그인</a>
-								<ul>
-									<li><a href="/findIdPage">아이디찾기</a></li>
-									<li><a href="/findPwPage">비밀번호찾기</a></li>
-									<li><a href="/registPage">회원가입</a></li>
-								</ul></li>
-						</c:when>
-						<c:otherwise>
-						<li><a href="/myInfoPage">${sessionScope.sessionVo.userName}님</a>
-								<ul>
-									<li><a class="loginATag" href="/logout">로그아웃</a></li>
-									<li><a class="loginATag" href="/myInfoEdit">비밀번호변경</a></li>
-									<li><a class="loginATag" href="/deleteInfoPage">회원탈퇴</a></li>
-								</ul></li>
-						</c:otherwise>
-					</c:choose>
+					<li class="current"><a href="loginPage">로그인</a></li>
 				</ul>
 			</nav>
 
 		</div>
 
-		<!-- Banner -->
-		<section id="banner">
-			<header>
-				<h2>
-					이거: <em>개어렵네 <a
-						href="http://html5up.net">HTML5 UP</a></em>
-				</h2>
-				<a href="#" class="button">Learn More</a>
-			</header>
+		<!-- Main -->
+		<section class="wrapper style1">
+			<div class="container">
+				<div id="content">
+					<!-- Content -->
+					<article>
+						<h2 class="major">로그인</h2>
+						<form method="post" action="login"
+							onsubmit="return loginCheckInfo()" accept-charset="UTF-8">
+							<div class="fields">
+								<div class="field half">
+									<label for="ID">아이디</label> <input type="text"
+										id="inputLoginId" placeholder="아이디 입력" name="userId"
+										required="required">
+								</div>
+								<div class="field half">
+									<label for="PW">비밀번호</label> <input type="password"
+										id="inputLoginPw" placeholder="비밀번호 입력" name="userPw"
+										required="required">
+								</div>
+							</div>
+							<div class="myFields" id="loginInputDiv">
+								<div class="myField">
+									<label class="myLabel" for="loginInputLabel">loglogloglog</label>
+								</div>
+							</div>
+							<div class="btnFields">
+								<div class="field">
+									<input type="submit" value="로그인" class="primary" />
+								</div>
+							</div>
+						</form>
+					</article>
+
+				</div>
+			</div>
 		</section>
 
-		
 		<!-- Footer -->
 		<div id="footer">
-			
+			<a class="loginATag" href="findIdPage">아이디 찾기</a> <a
+				class="loginATag" href="findPwPage">비밀번호 찾기</a> <a class="loginATag"
+				href="/registPage">회원가입</a>
 			<!-- Copyright -->
 			<div class="copyright">
 				<p class="copyright">&copy; Design: 서덕영</p>
 			</div>
-
 		</div>
 
 	</div>
-
 	<!-- Scripts -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
