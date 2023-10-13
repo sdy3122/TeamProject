@@ -8,5 +8,6 @@
 		<typeAlias type="kr.co.vo.WineVo" alias="WineVo"/>
 		<typeAlias type="kr.co.vo.VodkaVo" alias="VodkaVo"/>
 		<typeAlias type="kr.co.vo.WhiskeyVo" alias="WhiskeyVo"/>
+		<typeAlias type="kr.co.vo.SulVo" alias="SulVo"/>
 	</typeAliases>
 </configuration>

@@ -9,7 +9,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="${path}/resources/main/css/main.css" />
+<link rel="stylesheet" href="${path}/resources/main/css/choiceSul.css" />
 <style>
 </style>
 </head>
@@ -27,10 +27,8 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="/">메인화면</a></li>
-					<li><a href="/choiceSulPage">안주 추천</a></li>
-					<li><a href="#">랜덤채팅</a></li>
-					<li><a href="#">게시판</a>
+					<li class="current" id="titleLi"><a href="/">메인화면</a></li>
+					<li><a href="/boardPage">게시판</a>
 						<ul>
 							<li><a href="#">소주게시판</a></li>
 							<li><a href="#">맥주게시판</a></li>
@@ -49,7 +47,7 @@
 								</ul></li>
 						</c:when>
 						<c:otherwise>
-						<li><a href="/myInfoPage">${sessionScope.sessionVo.userName}님</a>
+							<li><a href="/myInfoPage">${sessionScope.sessionVo.userName}님</a>
 								<ul>
 									<li><a class="loginATag" href="/logout">로그아웃</a></li>
 									<li><a class="loginATag" href="/myInfoEdit">비밀번호변경</a></li>
@@ -63,14 +61,25 @@
 		</div>
 
 		<!-- Banner -->
-		<section id="banner">
+		<section id="banner" class="hideOnce">
 			<header>
 				<h2>
-					이거: <em>개어렵네 <a
-						href="http://html5up.net">HTML5 UP</a></em>
+					버튼 <em>랜덤안주생성</em>
 				</h2>
-				<a href="#" class="button">Learn More</a>
+				<a href="#" class="button" onclick="HSBanner()">클릭~!</a>
 			</header>
+		</section>
+		<section id="banner" class="hideBanner">
+			<header>
+				<div id="choiceSul1" class="sul" onclick="sojuRandomFood();">소주</div>
+				<div id="choiceSul3" class="sul" onclick="vodkaRandomFood();">보드카</div>
+				<div id="choiceSul2" class="sul" onclick="beerRandomFood();">맥주</div>
+				<div id="choiceSul4" class="sul" onclick="whiskeyRandomFood();">위스키</div>
+				<div id="choiceSul5" class="sul" onclick="wineRandomFood();">와인</div>
+			</header>
+			<div id="showFood1">랜덤</div>
+			<div id="showFood2">안주</div>
+			<div id="showFood3">출력</div>
 		</section>
 
 		

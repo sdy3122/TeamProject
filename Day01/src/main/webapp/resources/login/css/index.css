@@ -5,7 +5,7 @@
 	;
 
 #IdDupCheck {
-	border: solid 1.2px #369b00;
+	border: solid 1.2px #707070;
 	background-color: white !important;
 	color: black;
 }
@@ -24,18 +24,18 @@
 #tableSuccessHead {
 	font-size: 1rem;
 	margin-bottom: 1rem;
-	color: #369b00;
+	color: #707070;
 	font-weight: 1000;
 }
 
 #registDivBorder {
-	border: solid 1.2px #369b00;
+	border: solid 1.2px #707070;
 	border-radius: 7px;
 	padding: 3em;
 }
 
 #reInputBtn {
-	border: solid 1.5px #369b00;
+	border: solid 1.5px #707070;
 	border-radius: 4px;
 }
 
@@ -538,7 +538,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="tel
 		background-color 0.2s ease-in-out;
 	background-color: transparent;
 	border-radius: 4px;
-	border: solid 1px #369b00;
+	border: solid 1px #707070;
 	color: inherit;
 	display: block;
 	outline: 0;
@@ -1149,7 +1149,7 @@ input[type="submit"].small, input[type="reset"].small, input[type="button"].smal
 
 input[type="submit"].primary, input[type="reset"].primary, input[type="button"].primary,
 	button.primary, .button.primary {
-	background-color: #369b00;
+	background-color: #707070;
 	color: white;
 	font-weight: 600;
 }

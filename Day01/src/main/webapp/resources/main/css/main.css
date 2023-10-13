@@ -249,13 +249,13 @@ a {
 		opacity 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out,
 		opacity 0.2s ease-in-out;
-	color: #369b00;
+	color: #787878;
 	text-decoration: none;
 	border-bottom: dotted 1px;
 }
 
 a:hover {
-	color: #369b00;
+	color: #787878;
 	border-bottom-color: transparent;
 }
 
@@ -1876,7 +1876,7 @@ input
 [type="email"]
 :focus, textarea
 :focus {
-	border-color: #369b00;
+	border-color: #787878;
 }
 
 input
@@ -2019,7 +2019,7 @@ img {
 .major {
 	text-align: center;
 	cursor: default;
-	background-color: #369b00;
+	background-color: #787878;
 	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0),
 		rgba(0, 0, 0, 0.15)), url("images/bg01.png");
 	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0),
@@ -2372,7 +2372,7 @@ input
 		rgba(0, 0, 0, 0.15)), url("images/bg01.png");
 	background-image: linear-gradient(top, rgba(0, 0, 0, 0),
 		rgba(0, 0, 0, 0.15)), url("images/bg01.png");
-	background-color: #369b00;
+	background-color: #787878;
 	border-radius: 5px;
 	border: 0;
 	color: #fff;
@@ -2595,7 +2595,7 @@ a {
 	display: block;*/
 	width: 100%;
 	height: 0.75em;
-	background-color: #369b00;
+	background-color: #787878;
 	background-image: url("images/bg01.png");
 }
 
@@ -2651,7 +2651,7 @@ a {
 	bottom: -0.5em;
 	left: 50%;
 	margin-left: -0.375em;
-	background-color: #369b00;
+	background-color: #787878;
 	background-image: url("images/bg01.png");
 }
 
@@ -2821,7 +2821,7 @@ header
 
 .wrapper
 .style3 {
-	background-color: #369b00;
+	background-color: #787878;
 	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0),
 		rgba(0, 0, 0, 0.15)), url("images/bg01.png");
 	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0),
@@ -2846,7 +2846,7 @@ header
  
 .button
 :hover {
-	color: #369b00 !important;
+	color: #787878 !important;
 }
 
 /* CTA */
@@ -2891,7 +2891,7 @@ a {
  
 a
 :hover {
-	color: #369b00;
+	color: #787878;
 	border-bottom-color: transparent;
 }
 
@@ -3146,7 +3146,7 @@ a
 			rgba(0, 0, 0, 0.3)), url("images/bg01.png");
 		height: 44px;
 		line-height: 44px;
-		box-shadow: 0 4px 0 0 #369b00;
+		box-shadow: 0 4px 0 0 #787878;
 	}
 	#titleBar .title {
 		display: block;
@@ -3369,7 +3369,7 @@ a
 
 	/* Banner */
 	#banner {
-		height: 20em;
+		height: 20em !important;
 	}
 	#banner header {
 		padding: 20px;
@@ -5051,7 +5051,7 @@ input[type="text"], input[type="password"], input[type="email"],
 
 input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus,
 	textarea:focus {
-	border-color: #369b00;
+	border-color: #787878;
 }
 
 input[type="text"], input[type="password"], input[type="email"] {
@@ -5168,7 +5168,7 @@ label {
 .icon.major {
 	text-align: center;
 	cursor: default;
-	background-color: #369b00;
+	background-color: #787878;
 	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0),
 		rgba(0, 0, 0, 0.15)), url("images/bg01.png");
 	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0),
@@ -5560,7 +5560,7 @@ input[type="submit"], input[type="reset"], input[type="button"], button,
 		rgba(0, 0, 0, 0.15)), url("images/bg01.png");
 	background-image: linear-gradient(top, rgba(0, 0, 0, 0),
 		rgba(0, 0, 0, 0.15)), url("images/bg01.png");
-	background-color: #369b00;
+	background-color: #787878;
 	border-radius: 5px;
 	border: 0;
 	color: #fff;
@@ -5577,7 +5577,7 @@ input[type="submit"], input[type="reset"], input[type="button"], button,
 
 input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover,
 	button:hover, .button:hover {
-	background-color: #50c8fc;
+	background-color: #d7d6d6;
 	color: #fff !important;
 }
 
@@ -5689,7 +5689,7 @@ input[type="submit"].small, input[type="reset"].small, input[type="button"].smal
 	display: block;
 	width: 100%;
 	height: 0.75em;
-	background-color: #369b00;
+	background-color: #787878;
 	background-image: url("images/bg01.png");
 }
 
@@ -5736,7 +5736,7 @@ input[type="submit"].small, input[type="reset"].small, input[type="button"].smal
 	bottom: -0.5em;
 	left: 50%;
 	margin-left: -0.375em;
-	background-color: #369b00;
+	background-color: #787878;
 	background-image: url("images/bg01.png");
 }
 
@@ -5862,7 +5862,7 @@ input[type="submit"].small, input[type="reset"].small, input[type="button"].smal
 }
 
 .wrapper.style3 {
-	background-color: #369b00;
+	background-color: #787878;
 	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0),
 		rgba(0, 0, 0, 0.15)), url("images/bg01.png");
 	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0),
@@ -5880,7 +5880,7 @@ input[type="submit"].small, input[type="reset"].small, input[type="button"].smal
 }
 
 .wrapper.style3 .button:hover {
-	color: #369b00 !important;
+	color: #787878 !important;
 }
 
 /* CTA */
@@ -5912,7 +5912,7 @@ input[type="submit"].small, input[type="reset"].small, input[type="button"].smal
 }
 
 #footer a:hover {
-	color: #369b00;
+	color: #787878;
 	border-bottom-color: transparent;
 }
 
@@ -6214,7 +6214,7 @@ li
 			rgba(0, 0, 0, 0.3)), url("images/bg01.png");
 		height: 44px;
 		line-height: 44px;
-		box-shadow: 0 4px 0 0 #369b00;
+		box-shadow: 0 4px 0 0 #787878;
 	}
 	#titleBar
  

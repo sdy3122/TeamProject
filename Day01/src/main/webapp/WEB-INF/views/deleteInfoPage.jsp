@@ -9,7 +9,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="${path}/resources/main/css/main.css" />
+<link rel="stylesheet" href="${path}/resources/main/css/choiceSul.css" />
 <style>
 </style>
 </head>
@@ -24,20 +24,10 @@
 				<a href="/" id="logo"><em>페이지 이름 정해라</em></a>
 			</h1>
 
-			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li><a href="/">메인화면</a></li>
-					<li><a href="#">술</a>
-						<ul>
-							<li><a href="#">소주</a></li>
-							<li><a href="#">맥주</a></li>
-							<li><a href="#">와인</a></li>
-							<li><a href="#">보드카</a></li>
-							<li><a href="#">위스키</a></li>
-						</ul></li>
-					<li><a href="#">랜덤채팅</a></li>
-					<li><a href="#">게시판</a>
+					<li id="titleLi"><a href="/">메인화면</a></li>
+					<li><a href="/boardPage">게시판</a>
 						<ul>
 							<li><a href="#">소주게시판</a></li>
 							<li><a href="#">맥주게시판</a></li>
@@ -64,7 +54,7 @@
 									<button type="button" class="primary"
 										onclick="location.href='/deleteInfo'">회원탈퇴</button>
 									<button type="button" class="primary"
-										onclick="location.href='/myInfoPage'">취소</button>
+										onclick="location.href='/myInfoPage'" id="pleaseCancel">취소</button>
 								</div>
 							</div>
 						</form>

@@ -19,7 +19,7 @@ $('#IdDupCheck').click(function() {
 					$('#IdDupWarning').css("display", "none");
 					$('#IdDupWarning').css("display", "block");
 					// !important사용하려면 attr로 변경해야함
-					$('#IdDupCheck').attr('style', "background-color : #369b00 !important");
+					$('#IdDupCheck').attr('style', "background-color : #707070 !important");
 					$('#IdDupCheck').css("border", "none");
 					$('#IdDupCheck').css("color", "white");
 					$('label[for="IdLabelWarning"]').css('color', '#369b00');
@@ -36,6 +36,7 @@ $('#IdDupCheck').click(function() {
 					$('label[for="IdLabelWarning"]').text('아이디 중복 다시입력');
 					$('#DupCheck').attr('value','UnCheck');
 					$('#inputUserId').val('');
+					$('#inputUserId').focus();
 				}
 			},
 			error : function() {
@@ -54,6 +55,7 @@ function reInput() {
 	$('#IdDupCheck').attr('style', "background-color : white !important");
 	$('#IdDupCheck').css("border", "solid 1.2px #369b00");
 	$('#IdDupCheck').css("color", "black");
+	$('#inputUserId').focus();
 }
 
 // 비밀번호 확인
@@ -65,6 +67,7 @@ function checkPw() {
 		$('label[for="PwLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="PwLabelWarning"]').text('비밀번호는 4자이상으로 작성해주세요');
 		document.getElementById('registPW').value = '';
+		$('#registPW').focus();
 	}
 	if (pw != '' && document.getElementById('checkPW').value != '') {
 		if (pw == document.getElementById('checkPW').value) {
@@ -78,6 +81,7 @@ function checkPw() {
 			$('label[for="PwLabelWarning"]').css('color', 'rgb(255 0 0)');
 			$('label[for="PwLabelWarning"]').text('비밀번호 불일치 다시입력');
 			document.getElementById('checkPW').value = '';
+			$('#checkPW').focus();
 		}
 	}
 }
@@ -91,6 +95,7 @@ function checkNewPw() {
 		$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 0 0)');
 		$('label[for="NewPwLabelWarning"]').text('비밀번호는 4자이상으로 작성해주세요');
 		document.getElementById('newRegistPw').value = '';
+		$('#newRegistPw').focus();
 	}
 	if (newPw != '' && document.getElementById('newCheckPw').value != '') {
 		if (newPw == document.getElementById('newCheckPw').value) {
@@ -104,6 +109,7 @@ function checkNewPw() {
 			$('label[for="NewPwLabelWarning"]').css('color', 'rgb(255 0 0)');
 			$('label[for="NewPwLabelWarning"]').text('비밀번호 불일치 다시입력');
 			document.getElementById('newCheckPw').value = '';
+			$('#newCheckPw').focus();
 		}
 	}
 }
@@ -148,6 +154,7 @@ function changePw() {
 		$('label[for="NewPwLabelWarning"]').text('현재 비밀번호와 새 비밀번호를 다르게 입력하세요');
 		document.getElementById('newRegistPw').value = '';
 		document.getElementById('newCheckPw').value = '';
+		$('#newRegistPw').focus();
 		return false;
 	}
 	return changePwAjax();
@@ -174,6 +181,7 @@ function loginAjax() {
 				$('label[for="loginInputLabel"]').css('color', 'rgb(255 0 0)');
 				$('label[for="loginInputLabel"]').text('아이디 혹은 비밀번호가 틀렸습니다');
 				document.getElementById('inputLoginPw').value = '';
+				$('#inputLoginPw').focus();
 			}
 		},
 		error : function() {
@@ -257,6 +265,7 @@ function formCheck(obj) {
 		return false;
 	}
 	
+	alert('회원가입 성공!');
 	return checkRn();
 }
 

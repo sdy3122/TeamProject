@@ -9,7 +9,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="${path}/resources/main/css/main.css" />
+<link rel="stylesheet" href="${path}/resources/main/css/choiceSul.css" />
 <style>
 </style>
 </head>
@@ -27,10 +27,8 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li><a href="/">메인화면</a></li>
-					<li><a href="/choiceSulPage">안주 추천</a></li>
-					<li><a href="#">랜덤채팅</a></li>
-					<li><a href="#">게시판</a>
+					<li id="titleLi"><a href="/">메인화면</a></li>
+					<li><a href="/boardPage">게시판</a>
 						<ul>
 							<li><a href="#">소주게시판</a></li>
 							<li><a href="#">맥주게시판</a></li>
@@ -38,7 +36,14 @@
 							<li><a href="#">보드카게시판</a></li>
 							<li><a href="#">위스키게시판</a></li>
 						</ul></li>
-					<li class="current"><a href="loginPage">로그인</a></li>
+					<li class="current"><c:choose>
+							<c:when test="${empty check}">
+								<a href="/loginPage">로그인</a>
+							</c:when>
+							<c:otherwise>
+								<a href="/myInfoPage">${sessionScope.sessionVo.userName}님</a>
+							</c:otherwise>
+						</c:choose></li>
 				</ul>
 			</nav>
 
@@ -70,6 +75,7 @@
 									<label class="myLabel" for="loginInputLabel">loglogloglog</label>
 								</div>
 							</div>
+							<input type="hidden" name="pathChoiceNum" value="${checkPath}">
 							<div class="btnFields">
 								<div class="field">
 									<input type="submit" value="로그인" class="primary" />

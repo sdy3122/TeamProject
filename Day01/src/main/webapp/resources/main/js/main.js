@@ -1,4 +1,11 @@
 // 추가한 함수
+// 메인페이지 배너 제어
+function HSBanner() {
+	$('.hideOnce').css('display', 'none');
+	$('.hideBanner').css('display', 'block');
+}
+
+
 // 아이디 중복
 $('#IdDupCheck').click(function() {
 	let userId = $('#inputUserId').val();
@@ -18,7 +25,7 @@ $('#IdDupCheck').click(function() {
 				if (result == 0) {
 					$('#IdDupWarning').css("display", "none");
 					$('#IdDupWarning').css("display", "block");
-					$('label[for="IdLabelWarning"]').css('color', '#369b00');
+					$('label[for="IdLabelWarning"]').css('color', '#787878');
 					$('label[for="IdLabelWarning"]').text('아이디 사용가능!');
 					$('#DupCheck').attr('value','Check');
 					$('#inputUserId').attr('readonly', true);
@@ -60,7 +67,7 @@ function checkPw() {
 		if (pw == document.getElementById('checkPW').value) {
 			$('#PwDupWarning').css("display", "none");
 			$('#PwDupWarning').css("display", "block");
-			$('label[for="PwLabelWarning"]').css('color', '#369b00');
+			$('label[for="PwLabelWarning"]').css('color', '#787878');
 			$('label[for="PwLabelWarning"]').text('비밀번호일치!');
 		} else {
 			$('#PwDupWarning').css("display", "none");
@@ -86,7 +93,7 @@ function checkNewPw() {
 		if (newPw == document.getElementById('newCheckPw').value) {
 			$('#NewPwDupWarning').css("display", "none");
 			$('#NewPwDupWarning').css("display", "block");
-			$('label[for="NewPwLabelWarning"]').css('color', '#369b00');
+			$('label[for="NewPwLabelWarning"]').css('color', '#787878');
 			$('label[for="NewPwLabelWarning"]').text('비밀번호일치!');
 		} else {
 			$('#NewPwDupWarning').css("display", "none");
@@ -416,7 +423,7 @@ function sojuRandomFood() {
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:#369b00; font-weight:bold;"/>';
+	const html = '<div style="color:#787878; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");
@@ -474,7 +481,7 @@ function beerRandomFood() {
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:#369b00; font-weight:bold;"/>';
+	const html = '<div style="color:#787878; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");
@@ -532,7 +539,7 @@ function wineRandomFood() {
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:#369b00; font-weight:bold;"/>';
+	const html = '<div style="color:#787878; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");
@@ -590,7 +597,7 @@ function vodkaRandomFood() {
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:#369b00; font-weight:bold;"/>';
+	const html = '<div style="color:#787878; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");
@@ -648,7 +655,7 @@ function whiskeyRandomFood() {
 	const sulFood1 = sulFoodList[randomThree[0]];
 	const sulFood2 = sulFoodList[randomThree[1]];
 	const sulFood3 = sulFoodList[randomThree[2]];
-	const html = '<div style="color:#369b00; font-weight:bold;"/>';
+	const html = '<div style="color:#787878; font-weight:bold;"/>';
 	const foodBtnElement1 = document.getElementById("showFood1");
 	foodBtnElement1.innerHTML = html + sulFood1;
 	const foodBtnElement2 = document.getElementById("showFood2");

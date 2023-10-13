@@ -9,7 +9,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="${path}/resources/main/css/main.css" />
+<link rel="stylesheet" href="${path}/resources/main/css/choiceSul.css" />
 <style>
 </style>
 </head>
@@ -27,17 +27,8 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li><a href="/">메인화면</a></li>
-					<li><a href="/choiceSulPage">술</a>
-						<ul>
-							<li><a href="#">소주</a></li>
-							<li><a href="#">맥주</a></li>
-							<li><a href="#">와인</a></li>
-							<li><a href="#">보드카</a></li>
-							<li><a href="#">위스키</a></li>
-						</ul></li>
-					<li><a href="#">랜덤채팅</a></li>
-					<li><a href="/indexBoard">게시판</a>
+					<li id="titleLi"><a href="/">메인화면</a></li>
+					<li><a href="/boardPage">게시판</a>
 						<ul>
 							<li><a href="#">소주게시판</a></li>
 							<li><a href="#">맥주게시판</a></li>
@@ -87,7 +78,7 @@
 						<div class="field half">
 							<button type="submit" class="primary">비밀번호변경</button>
 							<button type="button" onclick="location.href='myInfoPage'"
-								class="primary">취소</button>
+								class="primary" id="pleaseCancel">취소</button>
 						</div>
 					</div>
 				</form>
