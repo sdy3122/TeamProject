@@ -1,5 +1,8 @@
 package kr.co.vo;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PagingVo {
 	private Criteria cri;
 	private int totalCount;
@@ -83,4 +86,18 @@ public class PagingVo {
 	public void setDisplayPageNum(int displayPageNum) {
 		this.displayPageNum = displayPageNum;
 	}
+
+	// 여기부터는 n번째 페이지로 다시가는방법
+	public String makeQueryPage(int page) {
+		UriComponents uri = UriComponentsBuilder.newInstance().queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum()).build();
+		return uri.toUriString();
+	}
+	// 이건 idx에 bno저장해서 update나 delete하는거인듯
+	public String makeQueryPage(long idx, int page) {
+		UriComponents uri = UriComponentsBuilder.newInstance().queryParam("idx", idx).queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum()).build();
+		return uri.toUriString();
+	}
+
 }

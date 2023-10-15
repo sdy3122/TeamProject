@@ -11,7 +11,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="${path}/resources/board/css/main.css" />
+<link rel="stylesheet" href="${path}/resources/board/css/myBoard.css" />
 </head>
 <body class="is-preload">
 
@@ -25,12 +25,13 @@
 			</h1>
 			<nav class="links">
 				<ul>
-					<li><a href="boardPage">통합커뮤니티</a></li>
+					<li><a href="boardPage">전체</a></li>
 					<li><a href="#">소주</a></li>
 					<li><a href="#">맥주</a></li>
 					<li><a href="#">와인</a></li>
 					<li><a href="#">보드카</a></li>
 					<li><a href="#">위스키</a></li>
+					<li><a href="#">자유</a></li>
 					<c:if test="${not empty check}">
 						<li id="showBoardUserName"><a href="/myInfoPage">${sessionScope.sessionVo.userName}님</a>
 					</c:if>
@@ -116,7 +117,7 @@
 					<ul>
 						<li id="boardSul">${alReg.sul}</li>
 						<li id="boardTitle"><a
-							href="singleBoardPage?var1=${alReg.bno}&var2=${alReg.regdate}">${alReg.title}</a></li>
+							href="singleBoardPage${pagingVo.makeQueryPage(alReg.bno, pagingVo.cri.page) }">${alReg.title}</a></li>
 						<li id="boardWriter">${alReg.writer}</li>
 						<!-- 날짜 포맷 -->
 						<li id="boardRegdate"><fmt:parseDate value="${alReg.regdate}"
@@ -133,7 +134,7 @@
 								</c:otherwise>
 							</c:choose></li>
 						<li id="boardClickCnt">${alReg.clickCnt}</li>
-						<li id="boardLikeBtn"><a href="#" class="icon solid fa-heart"
+						<li id="boardLikeBtn"><a class="icon solid fa-heart"
 							id="boardLikeColor"> ${alReg.likeBtn}</a></li>
 					</ul>
 				</c:forEach>
@@ -159,77 +160,12 @@
 
 			<!-- Pagination -->
 			<ul class="actions pagination">
-				<li><a href="" class="button large previous">글 작성</a></li>
-				<li><a href="#" class="button large next">내 글 보기</a></li>
+				<li><a href="myBoardPage" class="button large previous">내 게시글</a></li>
+				<li><a href="myBoardPage" class="button large next" id="showMyBoardBtn">댓글</a></li>
+				<li><a href="myBoardPage" class="button large next" id="showMyBoardBtn">좋아요</a></li>
 			</ul>
 
 		</div>
-
-		<!-- Sidebar -->
-		<section id="sidebar">
-			<!-- Intro -->
-			<section id="intro">
-				<header>
-					<h2>내 인기글</h2>
-				</header>
-			</section>
-			<!-- Posts List -->
-			<h3>
-				<a href="single.html">게시글</a>
-			</h3>
-			<section id="sidebarBody">
-				<c:forEach items="${allBoardLike}" var="alLike" begin="0" end="4"
-					varStatus="status">
-					<ul class="posts">
-						<li>
-							<article>
-								<header>
-									<h3>
-										<a
-											href="singleBoardPage?var1=${alLike.bno}&var2=${alLike.regdate}">${alLike.title}</a>
-									</h3>
-									<time class="published" id="sideBoardRegdate">${alLike.regdate}
-										<a href="#" class="icon solid fa-heart" id="boardLike">
-											${alLike.likeBtn}</a>
-									</time>
-
-								</header>
-							</article>
-						</li>
-					</ul>
-				</c:forEach>
-			</section>
-
-			<!-- About -->
-			<section class="blurb">
-				<h2>건의하기</h2>
-				<p>건의사항, 오류발견시 신고좀</p>
-				<ul class="actions">
-					<li><a href="#" class="button">ㄱㄱ</a></li>
-				</ul>
-			</section>
-
-			<!-- Footer -->
-			<section id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon brands fa-twitter"><span
-							class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon brands fa-facebook-f"><span
-							class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon brands fa-instagram"><span
-							class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon solid fa-rss"><span
-							class="label">RSS</span></a></li>
-					<li><a href="#" class="icon solid fa-envelope"><span
-							class="label">Email</span></a></li>
-				</ul>
-				<p class="copyright">
-					&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>.
-					Images: <a href="http://unsplash.com">Unsplash</a>.
-				</p>
-			</section>
-
-		</section>
 
 	</div>
 

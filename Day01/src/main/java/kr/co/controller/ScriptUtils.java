@@ -16,4 +16,15 @@ public class ScriptUtils {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void alertJust(HttpServletResponse res, String alertText) {
+		res.setContentType("text/html; charset=UTF-8");
+		try {
+			PrintWriter out = res.getWriter();
+			out.println("<script>alert('" + alertText + "');</script> ");
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

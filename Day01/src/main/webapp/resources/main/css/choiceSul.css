@@ -3,6 +3,7 @@
 @import
 	url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic")
 	;
+
 #pleaseCancel {
 	background-color: #d5d5d5e3;
 }
@@ -24,27 +25,25 @@
 
 /* 배너 header css */
 #banner>header>.sul {
-	padding : 0.7em 0;
+	padding: 0.7em 0;
 	display: inline-block;
 	width: 10%;
 	color: white;
 }
 
-#titleLi{
-	margin-left: 3em !important;
+#titleLi {
 	float: left;
 }
+
 #nav {
 	text-align: right !important;
-}
-#nav>ul {
-	margin-right: 3em !important;
 }
 
 /* alert창 대신 밑에 경고하기 label하고 div새로 */
 .myFields {
 	display: none;
 }
+
 .hideBanner {
 	display: none;
 }
@@ -2631,13 +2630,7 @@ a {
 	margin: 0;
 }
 
-#nav>ul>li {
-	position: relative;
-	display: inline-block;
-	margin-left: 1em;
-}
-
-#nav>ul>li
+#nav>ul>lic
  
 a {
 	color: #c0c0c0;
@@ -5230,7 +5223,7 @@ ol li {
 
 ul {
 	list-style: disc;
-	padding-left: 1em;
+	padding: 0 4em;
 }
 
 ul li {
@@ -5727,7 +5720,6 @@ input[type="submit"].small, input[type="reset"].small, input[type="button"].smal
 #nav>ul>li {
 	position: relative;
 	display: inline-block;
-	margin-left: 1em;
 }
 
 #nav>ul>li a {
@@ -5736,6 +5728,8 @@ input[type="submit"].small, input[type="reset"].small, input[type="button"].smal
 	border: 0;
 	display: block;
 	padding: 1.5em 0.5em 1.35em 0.5em;
+	text-align: center;
+	width:100px;
 }
 
 #nav>ul>li:first-child {
@@ -6433,9 +6427,9 @@ em {
 
 /* Mobile */
 @media screen and (max-width: 736px) { /* Basic */
-#banner>div {
-    font-size: 30px;
-}
+	#banner>div {
+		font-size: 30px;
+	}
 	body, input, select, textarea {
 		font-size: 11pt;
 		line-height: 1.35em;
@@ -6500,12 +6494,12 @@ li {
 
 /* Mobile (Portrait) */
 @media screen and (max-width: 480px) { /* Icon */
-#banner>div {
-    font-size: 20px;
-}
-#banner>header>.sul {
-	font-size: 5px;
-}
+	#banner>div {
+		font-size: 20px;
+	}
+	#banner>header>.sul {
+		font-size: 5px;
+	}
 	.icon
 .major {
 		width: 4em;

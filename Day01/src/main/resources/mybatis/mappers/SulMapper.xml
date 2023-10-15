@@ -2,167 +2,78 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mappers.SulMapper">
 
-	<select id="selectUnionAllregdateDesc" resultType="SulVo"
+	<select id="selectLikeBtnDesc" resultType="SulVo"
 		parameterType="String">
-		select * from soju
-		union all
-		select * from beer
-		union all
-		select * from wine
-		union all
-		select * from vodka
-		union all
-		select * from
-		whiskey
-		order by regdate desc
-	</select>
-
-	<select id="selectUnionAllLikeBtnDesc" resultType="SulVo"
-		parameterType="String">
-		select * from soju
-		union all
-		select * from beer
-		union all
-		select * from wine
-		union all
-		select * from vodka
-		union all
-		select * from
-		whiskey
+		select * from sul
 		order by likeBtn desc
 	</select>
 
-	<select id="selectBnoRegdate" resultType="SulVo"
-		parameterType="SulVo">
-		select * from soju
-		where regdate = #{regdate} and bno =
-		#{bno}
-		union all
-		select * from beer
-		where regdate = #{regdate} and bno =
-		#{bno}
-		union all
-		select * from wine
-		where regdate = #{regdate} and bno =
-		#{bno}
-		union all
-		select * from vodka
-		where regdate = #{regdate} and bno =
-		#{bno}
-		union all
-		select * from whiskey
-		where regdate = #{regdate} and bno
-		= #{bno}
+	<select id="selectBno" resultType="SulVo" parameterType="long">
+		select *
+		from sul
+		where bno = #{bno}
+	</select>
+	
+	<select id="findSameBno" resultType="String" parameterType="long">
+		select registNumber from sul where
+		bno = #{bno}
 	</select>
 
 	<select id="countSul" resultType="int">
-		select count(*) from (
-		select *
-		from soju
-		union all
-		select * from beer
-		union all
-		select * from wine
-		union
-		all
-		select * from vodka
-		union all
-		select * from whiskey ) ad
+		select count(*) from sul
 	</select>
 
 	<select id="selectLimit" resultType="SulVo"
 		parameterType="hashmap">
-		select * from soju
-		union all
-		select * from beer
-		union all
-		select * from wine
-		union all
-		select * from vodka
-		union all
-		select * from
-		whiskey
-		order by regdate desc
-		limit #{pageStart}, #{perPageNum}
+		select * from sul
+		order by bno desc
+		limit #{pageStart},
+		#{perPageNum}
 	</select>
 
-	<select id="selectByWriter" resultType="int"
-		parameterType="String">
-		select count(*) from (
-		select * from soju
-		where writer = #{name}
-		union all
-		select * from beer
-		where writer = #{name}
-		union all
-		select * from wine
-		where writer = #{name}
-		union all
-		select * from vodka
-		where writer = #{name}
-		union all
-		select * from whiskey
-		where writer = #{name} ) ad
+	<select id="selectByRegistNumber" resultType="int"
+		parameterType="long">
+		select count(*) from sul where registNumber = #{reg}
 	</select>
-	
+
 	<select id="selectMyLikeBtnDesc" resultType="SulVo"
 		parameterType="UserVo">
-		select * from soju
-		where writer = #{name}
-		union all
-		select * from beer
-		where writer = #{name}
-		union all
-		select * from wine
-		where writer = #{name}
-		union all
-		select * from vodka
-		where writer = #{name}
-		union all
-		select * from whiskey
-		where writer = #{name}
-		order by likeBtn desc
+		select * from sul
+		where registNumber = #{registNumber}
+		order by
+		likeBtn desc
 	</select>
-	
+
 	<select id="countMySul" resultType="int" parameterType="UserVo">
-		select count(*) from (
-		select *
-		from soju
-		where writer = #{name}
-		union all
-		select * from beer
-		where writer = #{name}
-		union all
-		select * from wine
-		where writer = #{name}
-		union
-		all
-		select * from vodka
-		where writer = #{name}
-		union all
-		select * from whiskey
-		where writer = #{name} ) ad
+		select
+		count(*) from sul
+		where registNumber = #{registNumber}
 	</select>
-	
+
 	<select id="selectMyLimit" resultType="SulVo"
 		parameterType="hashmap">
-		select * from soju
-		where writer = #{name}
-		union all
-		select * from beer
-		where writer = #{name}
-		union all
-		select * from wine
-		where writer = #{name}
-		union all
-		select * from vodka
-		where writer = #{name}
-		union all
-		select * from
-		whiskey
-		where writer = #{name}
-		order by regdate desc
-		limit #{pageStart}, #{perPageNum}
+		select * from sul
+		where registNumber = #{registNumber}
+		order by bno desc
+		limit #{pageStart},
+		#{perPageNum}
 	</select>
+
+	<insert id="insertBoard" parameterType="SulVo">
+		insert into sul (sul,
+		writer, registNumber, menu, title, content) values
+		(#{sul}, #{writer},
+		#{registNumber}, #{menu}, #{title}, #{content})
+	</insert>
+
+	<update id="updateBoard" parameterType="SulVo">
+		UPDATE sul SET
+		title=#{title}, content=#{content},
+		sul=#{sul}, menu=#{menu}, editdate=current_timestamp() WHERE bno = #{bno}
+	</update>
+	
+	<update id="deleteBoard" parameterType="SulVo">
+		delete from sul WHERE bno = #{bno}
+	</update>
 
 </mapper>

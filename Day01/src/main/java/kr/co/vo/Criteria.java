@@ -4,6 +4,15 @@ public class Criteria {
 	private int page;
 	private int perPageNum;
 	private String name;
+	private long registNumber;
+	
+	public long getRegistNumber() {
+		return registNumber;
+	}
+
+	public void setRegistNumber(long registNumber) {
+		this.registNumber = registNumber;
+	}
 
 	public String getName() {
 		return name;

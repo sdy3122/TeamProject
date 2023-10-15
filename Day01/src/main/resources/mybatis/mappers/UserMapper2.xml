@@ -6,7 +6,7 @@
 		userId = #{userId}
 	</select>
 	
-	<select id="findSameRn" resultType="UserVo">
+	<select id="findSameRn" resultType="UserVo" parameterType="String">
 		select * from users_tb where
 		registNumber = #{rn}
 	</select>

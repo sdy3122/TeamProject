@@ -8,13 +8,16 @@ import kr.co.vo.SulVo;
 import kr.co.vo.UserVo;
 
 public interface SulMapper {
-	ArrayList<SulVo> selectUnionAllregdateDesc();
-	ArrayList<SulVo> selectUnionAllLikeBtnDesc();
-	ArrayList<SulVo> selectBnoRegdate(SulVo sulvo);
+	ArrayList<SulVo> selectLikeBtnDesc();
+	SulVo selectBno(long bno);
 	int countSul();
-	int selectByWriter(String name);
+	int selectByRegistNumber(long reg);
 	List<SulVo> selectLimit(Criteria cri);
 	ArrayList<SulVo> selectMyLikeBtnDesc(UserVo vo);
 	int countMySul(UserVo vo);
 	List<SulVo> selectMyLimit(Criteria cri);
+	boolean insertBoard(SulVo sul);
+	boolean updateBoard(SulVo sul);
+	boolean deleteBoard(SulVo sul);
+	String findSameBno(long bno);
 }

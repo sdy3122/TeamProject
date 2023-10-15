@@ -25,12 +25,13 @@
 			</h1>
 			<nav class="links">
 				<ul>
-					<li><a href="boardPage">통합커뮤니티</a></li>
+					<li><a href="boardPage">전체</a></li>
 					<li><a href="#">소주</a></li>
 					<li><a href="#">맥주</a></li>
 					<li><a href="#">와인</a></li>
 					<li><a href="#">보드카</a></li>
 					<li><a href="#">위스키</a></li>
+					<li><a href="#">자유</a></li>
 					<c:if test="${not empty check}">
 						<li id="showBoardUserName"><a href="/myInfoPage">${sessionScope.sessionVo.userName}님</a>
 					</c:if>
@@ -81,7 +82,8 @@
 				<c:choose>
 					<c:when test="${empty check}">
 						<ul class="actions stacked">
-							<li><a href="/boardLoginPage" class="button large fit" onclick="boardGoLogin">로그인</a></li>
+							<li><a href="/boardLoginPage" class="button large fit"
+								onclick="boardGoLogin">로그인</a></li>
 						</ul>
 					</c:when>
 					<c:otherwise>
@@ -90,9 +92,6 @@
 						</ul>
 					</c:otherwise>
 				</c:choose>
-
-
-
 
 			</section>
 
@@ -116,8 +115,18 @@
 					<ul>
 						<li id="boardSul">${alReg.sul}</li>
 						<li id="boardTitle"><a
-							href="singleBoardPage?var1=${alReg.bno}&var2=${alReg.regdate}">${alReg.title}</a></li>
-						<li id="boardWriter">${alReg.writer}</li>
+							href="singleBoardPage${pagingVo.makeQueryPage(alReg.bno, pagingVo.cri.page) }">${alReg.title}</a></li>
+						<c:choose>
+							<c:when
+								test="${sessionScope.sessionVo.registNumber eq alReg.registNumber}">
+								<li id="boardWriter"><a href="myBoardPage?idx=${alReg.bno}">${alReg.writer}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li id="boardWriter"><a
+									href="otherBoardPage?idx=${alReg.bno}">${alReg.writer}</a></li>
+							</c:otherwise>
+						</c:choose>
+
 						<!-- 날짜 포맷 -->
 						<li id="boardRegdate"><fmt:parseDate value="${alReg.regdate}"
 								var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" /> <fmt:formatDate
@@ -133,34 +142,38 @@
 								</c:otherwise>
 							</c:choose></li>
 						<li id="boardClickCnt">${alReg.clickCnt}</li>
-						<li id="boardLikeBtn"><a href="#" class="icon solid fa-heart"
+						<li id="boardLikeBtn"><a class="icon solid fa-heart"
 							id="boardLikeColor"> ${alReg.likeBtn}</a></li>
 					</ul>
 				</c:forEach>
 
-				<ul class="btn-group pagination">
+				<ul class="pagination">
 					<c:if test="${pagingVo.prev }">
 						<li><a
-							href='<c:url value="/boardPage?page=${pagingVo.startPage-1 }"/>'><i
+							href='<c:url value="/boardPage${pagingVo.makeQueryPage(pagingVo.startPage-1) }"/>'><i
 								class="fa fa-chevron-left"></i></a></li>
 					</c:if>
 					<c:forEach begin="${pagingVo.startPage }"
 						end="${pagingVo.endPage }" var="pageNum">
-						<li><a href='<c:url value="/boardPage?page=${pageNum }"/>'><i
-								class="fa">${pageNum }</i></a></li>
+						<li><a
+							href='<c:url value="/boardPage${pagingVo.makeQueryPage(pageNum) }"/>'>${pageNum }</a>
+						</li>
 					</c:forEach>
 					<c:if test="${pagingVo.next && pagingVo.endPage >0 }">
 						<li><a
-							href='<c:url value="/boardPage?page=${pagingVo.endPage+1 }"/>'><i
-								class="fa fa-chevron-right"></i></a></li>
+							href='<c:url value="/boardPage${pagingVo.makeQueryPage(pagingVo.endPage+1) }"/>'><i
+								class="fa fa-chevron-right">></i></a></li>
 					</c:if>
 				</ul>
+
 			</article>
 
 			<!-- Pagination -->
 			<ul class="actions pagination">
-				<li><a href="" class="button large previous">글 작성</a></li>
-				<li><a href="#" class="button large next">내 글 보기</a></li>
+				<li><a href="createBoard" class="button large previous">글
+						작성</a></li>
+				<li><a href="myBoardPage" class="button large next"
+					id="showMyBoardBtn">내 글 보기</a></li>
 			</ul>
 
 		</div>
@@ -175,7 +188,7 @@
 			</section>
 			<!-- Posts List -->
 			<h3>
-				<a href="single.html">인기 게시글</a>
+				<a href="">인기 게시글</a>
 			</h3>
 			<section id="sidebarBody">
 				<c:forEach items="${allBoardLike}" var="alLike" begin="0" end="4"
@@ -185,11 +198,12 @@
 							<article>
 								<header>
 									<h3>
-										<a
-											href="singleBoardPage?var1=${alLike.bno}&var2=${alLike.regdate}">${alLike.title}</a>
+
+										<a id="overFlowH3"
+											href="singleBoardPage${pagingVo.makeQueryPage(alLike.bno, pagingVo.cri.page) }">${alLike.title}</a>
 									</h3>
 									<time class="published" id="sideBoardRegdate">${alLike.regdate}
-										<a href="#" class="icon solid fa-heart" id="boardLike">
+										<a class="icon solid fa-heart" id="boardLike">
 											${alLike.likeBtn}</a>
 									</time>
 

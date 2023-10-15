@@ -3,44 +3,38 @@ function selChange() {
 	location.href="boardList?nowPage=${paging.nowPage}&cntPerPage="+sel;
 }
 
-// obj = index값 받았기 때문에 변수이름들도 다 바뀜
-function chk_form(obj) {
-console.log(obj);
-
-let formChecking = 'formChoiceBoard' + obj;
-let findRegdate = 'boardChoiceRegdate' + obj;
-let findLike = 'boardChoiceLike' + obj;
-
-console.log(findRegdate);
-console.log(findLike);
-
-let varRegdate = $('#boardRegdate0').val();
-let varLike = $('findLike').val();
-
-console.log(varRegdate);
-console.log(varLike);
-
-$.ajax({
-		url : "loginCheck",
-		type : "post",
-		async : false,
-		data : {
-			findRegdate : findRegdate,
-			findLike : findLike
-		},
-		dataType : 'json',
-		success : function(result) {
-			if (result == 0) {
-				let url = "/singleBoardPage";
-				location.replace(url);
-			}
-		},
-		error : function() {
-			alert("서버요청실패");
-		}
-	});
-	
+function regBoardChk() {
+if ( ! $('input[name=choiceSulType]:checked').val()) {
+	alert('카테고리를 선택하세요');
+	return false;
 }
+if(document.getElementById("regTitle").value==''){
+	alert("제목을 입력해 주세요.");
+	return false;
+}
+if(document.getElementById("regContent").value==''){
+	alert("내용을 입력해 주세요.");
+	return false;
+}
+document.getElementById('registBoardForm').submit();
+}
+
+function regBoardChk() {
+if ( ! $('input[name=choiceSulType]:checked').val()) {
+	alert('카테고리를 선택하세요');
+	return false;
+}
+if(document.getElementById("regTitle").value==''){
+	alert("제목을 입력해 주세요.");
+	return false;
+}
+if(document.getElementById("regContent").value==''){
+	alert("내용을 입력해 주세요.");
+	return false;
+}
+document.getElementById('registBoardForm').submit();
+}
+
 
 (function($) {
 

@@ -1,12 +1,11 @@
 package kr.co.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,20 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.mappers.BeerMapper;
-import kr.co.mappers.SojuMapper;
 import kr.co.mappers.SulMapper;
 import kr.co.mappers.UserMapper;
-import kr.co.mappers.VodkaMapper;
-import kr.co.mappers.WhiskeyMapper;
-import kr.co.mappers.WineMapper;
 import kr.co.service.UserService;
-import kr.co.vo.BeerVo;
-import kr.co.vo.SojuVo;
 import kr.co.vo.UserVo;
-import kr.co.vo.VodkaVo;
-import kr.co.vo.WhiskeyVo;
-import kr.co.vo.WineVo;
 
 @Controller
 public class UserController {
@@ -36,17 +25,7 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	@Autowired
-	private SojuMapper sojuMapper;
-	@Autowired
 	private UserMapper userMapper;
-	@Autowired
-	private BeerMapper beerMapper;
-	@Autowired
-	private VodkaMapper vodkaMapper;
-	@Autowired
-	private WhiskeyMapper whiskeyMapper;
-	@Autowired
-	private WineMapper wineMapper;
 	@Autowired
 	private SulMapper sulMapper;
 	
@@ -77,7 +56,11 @@ public class UserController {
 	}
 	
 	@GetMapping("myInfoPage")
-	public String myInfoPage() {
+	public String myInfoPage(HttpServletRequest req, HttpSession session, UserVo vo) {
+		session = req.getSession(false);
+		vo = (UserVo) session.getAttribute("sessionVo");
+		int writeCnt = sulMapper.selectByRegistNumber(vo.getRegistNumber());
+		session.setAttribute("cnt", writeCnt);
 		return "myInfoPage";
 	}
 	
@@ -133,7 +116,7 @@ public class UserController {
 				session.setAttribute("sessionVo", vo);
 				session.setAttribute("check", true);
 				
-				int writeCnt = sulMapper.selectByWriter(vo.getUserName());
+				int writeCnt = sulMapper.selectByRegistNumber(vo.getRegistNumber());
 				session.setAttribute("cnt", writeCnt);
 			} else {
 				System.out.println("아이디 일치, 비밀번호 틀림 ㅅㄱ");
@@ -263,58 +246,58 @@ public class UserController {
 		return countDupRn;
 	}
 	
-	@ResponseBody
-	@PostMapping("/sojuFood")
-	public List<SojuVo> sojuFood(HttpServletRequest req) {
-		System.out.println("소주 안주 찾으러 옴");
-		List<SojuVo> menuList = sojuMapper.selectDistinctSojuList();
-		for (int i = 0; i < menuList.size(); i++) {
-			System.out.println(menuList.get(i));
-		}
-		return menuList;
-	}
-	
-	@ResponseBody
-	@PostMapping("/beerFood")
-	public List<BeerVo> beerFood(HttpServletRequest req) {
-		System.out.println("맥주 안주 찾으러 옴");
-		List<BeerVo> menuList = beerMapper.selectDistinctBeerList();
-		for (int i = 0; i < menuList.size(); i++) {
-			System.out.println(menuList.get(i));
-		}
-		return menuList;
-	}
-	
-	@ResponseBody
-	@PostMapping("/wineFood")
-	public List<WineVo> wineFood(HttpServletRequest req) {
-		System.out.println("와인 안주 찾으러 옴");
-		List<WineVo> menuList = wineMapper.selectDistinctWineList();
-		for (int i = 0; i < menuList.size(); i++) {
-			System.out.println(menuList.get(i));
-		}
-		return menuList;
-	}
-	
-	@ResponseBody
-	@PostMapping("/vodkaFood")
-	public List<VodkaVo> vodkaFood(HttpServletRequest req) {
-		System.out.println("보드카 안주 찾으러 옴");
-		List<VodkaVo> menuList = vodkaMapper.selectDistinctVodkaList();
-		for (int i = 0; i < menuList.size(); i++) {
-			System.out.println(menuList.get(i));
-		}
-		return menuList;
-	}
-	
-	@ResponseBody
-	@PostMapping("/whiskeyFood")
-	public List<WhiskeyVo> whiskeyFood(HttpServletRequest req) {
-		System.out.println("위스키 안주 찾으러 옴");
-		List<WhiskeyVo> menuList = whiskeyMapper.selectDistinctWhiskeyList();
-		for (int i = 0; i < menuList.size(); i++) {
-			System.out.println(menuList.get(i));
-		}
-		return menuList;
-	}
+//	@ResponseBody
+//	@PostMapping("/sojuFood")
+//	public List<SojuVo> sojuFood(HttpServletRequest req) {
+//		System.out.println("소주 안주 찾으러 옴");
+//		List<SojuVo> menuList = sojuMapper.selectDistinctSojuList();
+//		for (int i = 0; i < menuList.size(); i++) {
+//			System.out.println(menuList.get(i));
+//		}
+//		return menuList;
+//	}
+//	
+//	@ResponseBody
+//	@PostMapping("/beerFood")
+//	public List<BeerVo> beerFood(HttpServletRequest req) {
+//		System.out.println("맥주 안주 찾으러 옴");
+//		List<BeerVo> menuList = beerMapper.selectDistinctBeerList();
+//		for (int i = 0; i < menuList.size(); i++) {
+//			System.out.println(menuList.get(i));
+//		}
+//		return menuList;
+//	}
+//	
+//	@ResponseBody
+//	@PostMapping("/wineFood")
+//	public List<WineVo> wineFood(HttpServletRequest req) {
+//		System.out.println("와인 안주 찾으러 옴");
+//		List<WineVo> menuList = wineMapper.selectDistinctWineList();
+//		for (int i = 0; i < menuList.size(); i++) {
+//			System.out.println(menuList.get(i));
+//		}
+//		return menuList;
+//	}
+//	
+//	@ResponseBody
+//	@PostMapping("/vodkaFood")
+//	public List<VodkaVo> vodkaFood(HttpServletRequest req) {
+//		System.out.println("보드카 안주 찾으러 옴");
+//		List<VodkaVo> menuList = vodkaMapper.selectDistinctVodkaList();
+//		for (int i = 0; i < menuList.size(); i++) {
+//			System.out.println(menuList.get(i));
+//		}
+//		return menuList;
+//	}
+//	
+//	@ResponseBody
+//	@PostMapping("/whiskeyFood")
+//	public List<WhiskeyVo> whiskeyFood(HttpServletRequest req) {
+//		System.out.println("위스키 안주 찾으러 옴");
+//		List<WhiskeyVo> menuList = whiskeyMapper.selectDistinctWhiskeyList();
+//		for (int i = 0; i < menuList.size(); i++) {
+//			System.out.println(menuList.get(i));
+//		}
+//		return menuList;
+//	}
 }
